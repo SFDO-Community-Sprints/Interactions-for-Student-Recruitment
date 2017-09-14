@@ -15,11 +15,12 @@ It is intended to be short, flexible, and clear.
 #### Collaborator (<a href="http://salesforce.org/" target="_blank">Salesforce.org</a>)
 
 * Collaborators associated with <a href="http://salesforce.org/" target="_blank">Salesforce.org</a> are listed as such solely for the purpose of initializing the Student Recruitment Success Pack repo which is housed under the <a href="https://github.com/SalesforceFoundation" target="_blank"> SalesforceFoundation Github Org</a>.
-* Collaborators of this repo that are associated with <a href="http://salesforce.org/" target="_blank">Salesforce.org</a> are excluded from the Roles identified under the sections: Collaborator (University of Miami) & Collaborator (Everyone else).
+
+* Collaborators of this repo that are associated with <a href="http://salesforce.org/" target="_blank">Salesforce.org</a> are excluded from the Roles identified under the sections: Collaborator (<a href="http://welcome.miami.edu/" target="_blank">University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a>) & Collaborator (Everyone else).
 
 #### Collaborator (<a href="http://welcome.miami.edu/" target="_blank">University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a>)
 
-* Collaborators associated with the <a href="http://welcome.miami.edu/" target="_blank"> University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a> are listed as such solely for the purpose of documenting the project and pushing the final version of the project code to the Student Recruitment Success Pack repo which is housed under the SalesforceFoundation Github Org.
+* Collaborators associated with the <a href="http://welcome.miami.edu/" target="_blank"> University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a> are listed as such solely for the purpose of documenting the project and pushing the final version of the project code to the Student Recruitment Success Pack repo which is housed under the <a href="https://github.com/SalesforceFoundation" target="_blank"> SalesforceFoundation Github Org</a>.
 * Collaborators of this repo that are associated with the <a href="http://welcome.miami.edu/" target="_blank"> University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a> have the option of participating in the Role identified under the section: Collaborator (Everyone else).
 
 #### Collaborator (Everyone else)
@@ -46,7 +47,7 @@ If you are interested in becoming a Collaborator of the Student Recruitment Succ
 
 #### You will need to get setup with 2-factor authentication
 
-2FA is required by the SalesforceFoundation Github Org before granting the role of Collaborator.
+2FA is required by the <a href="https://github.com/SalesforceFoundation" target="_blank">SalesforceFoundation Github Org</a> before granting the role of Collaborator.
 
 * <a href="https://help.github.com/articles/configuring-two-factor-authentication-via-text-message/" target="_blank">Configuring two-factor authentication via text message</a>
 * <a href="https://help.github.com/articles/providing-your-2fa-authentication-code/" target="_blank">Providing your 2FA authentication code</a>
