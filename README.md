@@ -8,7 +8,7 @@ At the top of the file there should be a short introduction and/ or overview tha
 
 Thanks for your interest in the Student Recruitment Success Pack. This project's code is provided as-is and is not actively maintained. The developers invite you to peruse their code and even use it in your next project, provided you follow the included license. No guarantee of support for the code is provided and there is no guarantee that pull requests will be reviewed or merged. It's open source, so forking is permitted; just be sure to give credit where it's due.
 
-If you are interested in learning about the Project Roles, Roadmap, How to become a Collaborator, and/or where to find Community surrounding this project then please review our Maintenance Policy.
+If you are interested in learning about the Project Roles, Roadmap, How to become a Collaborator, and/or where to find Community surrounding this project then please review our <a href="https://github.com/SalesforceFoundation/Student-Recruitment-Success-Pack/blob/master/Maintenance-Policy.md">Maintenance Policy</a>.
 
 ## Installation
 
@@ -38,7 +38,7 @@ Describe and show how to run the tests with code examples.
 
 ## Contributors
 
-If you are interested in becoming a Collaboratorplease review our Maintenance Policy.
+If you are interested in becoming a Collaboratorplease review our <a href="https://github.com/SalesforceFoundation/Student-Recruitment-Success-Pack/blob/master/Maintenance-Policy.md">Maintenance Policy</a>.
 
 ## License
 
