@@ -61,7 +61,7 @@ If you are interested in becoming a Collaborator of the Interactions for Student
 
 #### Install the <a href="https://github.com/SalesforceFoundation/HEDAP" target="_blank">HEDA code BASE</a> using the <a href="https://mrbelvedere.salesforcefoundation.org/mpinstaller/hed" target="_blank"> HEDA Installer</a>
 
-#### Install the Student Recruitment Success Pack Code Base using the Interactions for Student Recruitment Installer
+#### Install Interactions for Student Recruitment Code Base using the Interactions for Student Recruitment Installer
 
 ### Contact information for becoming a Collaborator
 
