@@ -1,14 +1,14 @@
-# Student-Recruitment-Success-Pack
-This repo was setup for the University of Miami's "Student Recruitment Success Pack".
+# Interactions-for-Student-Recruitment
+This repo was setup for the University of Miami's "Interactions for Student Recruitment".
 
 ## Synopsis
 At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. 
 
 ## Maintenance
 
-Thanks for your interest in the Student Recruitment Success Pack. This project's code is provided as-is and is not actively maintained. The developers invite you to peruse their code and even use it in your next project, provided you follow the included license. No guarantee of support for the code is provided and there is no guarantee that pull requests will be reviewed or merged. It's open source, so forking is permitted; just be sure to give credit where it's due.
+Thanks for your interest in the Interactions for Student Recruitment. This project's code is provided as-is and is not actively maintained. The developers invite you to peruse their code and even use it in your next project, provided you follow the included license. No guarantee of support for the code is provided and there is no guarantee that pull requests will be reviewed or merged. It's open source, so forking is permitted; just be sure to give credit where it's due.
 
-If you are interested in learning about the Project Roles, Roadmap, How to become a Collaborator, and/or where to find Community surrounding this project then please review our <a href="https://github.com/SalesforceFoundation/Student-Recruitment-Success-Pack/blob/master/Maintenance-Policy.md">Maintenance Policy</a>.
+If you are interested in learning about the Project Roles, Roadmap, How to become a Collaborator, and/or where to find Community surrounding this project then please review our <a href="https://github.com/SalesforceFoundation/Interactions-for-Student-Recruitment/blob/master/Maintenance-Policy.md">Maintenance Policy</a>.
 
 ## Installation
 
@@ -38,13 +38,13 @@ Describe and show how to run the tests with code examples.
 
 ## Contributors
 
-If you are interested in becoming a Collaboratorplease review our <a href="https://github.com/SalesforceFoundation/Student-Recruitment-Success-Pack/blob/master/Maintenance-Policy.md">Maintenance Policy</a>.
+If you are interested in becoming a Collaboratorplease review our <a href="https://github.com/SalesforceFoundation/Interactions-for-Student-Recruitment/blob/master/Maintenance-Policy.md">Maintenance Policy</a>.
 
 ## License
 
-The **Student Recruitment Success Pack** is an open-source package created by the <a href="http://welcome.miami.edu/" target="_blank"> University of Miami </a> and housed by Salesforce.org (“SFDO”) under their BSD-3 Clause License, found at https://opensource.org/licenses/BSD-3-Clause. 
+The **Interactions for Student Recruitment** is an open-source package created by the <a href="http://welcome.miami.edu/" target="_blank"> University of Miami </a> and housed by Salesforce.org (“SFDO”) under their BSD-3 Clause License, found at https://opensource.org/licenses/BSD-3-Clause. 
 
- ANY MASTER SUBSCRIPTION AGREEMENT YOU OR YOUR ENTITY MAY HAVE WITH SFDO DOES NOT APPLY TO YOUR USE OF THE STUDENT RECRUITMENT SUCCESS PACK. THE STUDENT RECRUITMENT SUCCESS PACK IS PROVIDED “AS IS” AND AS AVAILABLE, AND SFDO MAKES NO WARRANTY OF ANY KIND REGARDING THE STUDENT RECRUITMENT SUCCESS PACK, WHETHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, FREEDOM FROM DEFECTS OR NON-INFRINGEMENT, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW. SFDO WILL HAVE NO LIABILITY ARISING OUT OF OR RELATED TO YOUR USE OF THE STUDENT RECRUITMENT SUCCESS PACK FOR ANY DIRECT DAMAGES OR FOR ANY LOST PROFITS, REVENUES, GOODWILL OR INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, EXEMPLARY, COVER, BUSINESS INTERRUPTION OR PUNITIVE DAMAGES, WHETHER AN ACTION IS IN CONTRACT OR TORT AND REGARDLESS OF THE THEORY OF LIABILITY, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES OR IF A REMEDY OTHERWISE FAILS OF ITS ESSENTIAL PURPOSE. THE FOREGOING DISCLAIMER WILL NOT APPLY TO THE EXTENT PROHIBITED BY LAW. SFDO DISCLAIMS ALL LIABILITY AND INDEMNIFICATION OBLIGATIONS FOR ANY HARM OR DAMAGES CAUSED BY ANY THIRD-PARTY HOSTING PROVIDERS.
+ ANY MASTER SUBSCRIPTION AGREEMENT YOU OR YOUR ENTITY MAY HAVE WITH SFDO DOES NOT APPLY TO YOUR USE OF INTERACTIONS FOR STUDENT RECRUITMENT. INTERACTIONS FOR STUDENT RECRUITMENT IS PROVIDED “AS IS” AND AS AVAILABLE, AND SFDO MAKES NO WARRANTY OF ANY KIND REGARDING INTERACTIONS FOR STUDENT RECRUITMENT, WHETHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE, INCLUDING BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, FREEDOM FROM DEFECTS OR NON-INFRINGEMENT, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW. SFDO WILL HAVE NO LIABILITY ARISING OUT OF OR RELATED TO YOUR USE OF THE STUDENT RECRUITMENT SUCCESS PACK FOR ANY DIRECT DAMAGES OR FOR ANY LOST PROFITS, REVENUES, GOODWILL OR INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, EXEMPLARY, COVER, BUSINESS INTERRUPTION OR PUNITIVE DAMAGES, WHETHER AN ACTION IS IN CONTRACT OR TORT AND REGARDLESS OF THE THEORY OF LIABILITY, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES OR IF A REMEDY OTHERWISE FAILS OF ITS ESSENTIAL PURPOSE. THE FOREGOING DISCLAIMER WILL NOT APPLY TO THE EXTENT PROHIBITED BY LAW. SFDO DISCLAIMS ALL LIABILITY AND INDEMNIFICATION OBLIGATIONS FOR ANY HARM OR DAMAGES CAUSED BY ANY THIRD-PARTY HOSTING PROVIDERS.
 
 Acknowledgements
 
