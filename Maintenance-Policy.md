@@ -1,6 +1,6 @@
 # Maintenance Policy
 
-The Maintenance Policy defines how decisions are made about what happens with the Student Recruitment Success Pack. It provides the process by which:
+The Maintenance Policy defines how decisions are made about what happens with the Interactions for Student Recruitment. It provides the process by which:
 
 * Future decisions of the project are made (i.e. Roadmap)
 * Issues are addressed
@@ -14,13 +14,13 @@ It is intended to be short, flexible, and clear.
 
 #### Collaborator (<a href="http://salesforce.org/" target="_blank">Salesforce.org</a>)
 
-* Collaborators associated with <a href="http://salesforce.org/" target="_blank">Salesforce.org</a> are listed as such solely for the purpose of initializing the Student Recruitment Success Pack repo which is housed under the <a href="https://github.com/SalesforceFoundation" target="_blank"> SalesforceFoundation Github Org</a>.
+* Collaborators associated with <a href="http://salesforce.org/" target="_blank">Salesforce.org</a> are listed as such solely for the purpose of initializing the Interactions for Student Recruitment repo which is housed under the <a href="https://github.com/SalesforceFoundation" target="_blank"> SalesforceFoundation Github Org</a>.
 
 * Collaborators of this repo that are associated with <a href="http://salesforce.org/" target="_blank">Salesforce.org</a> are excluded from the Roles identified under the sections: Collaborator (<a href="http://welcome.miami.edu/" target="_blank">University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a>) & Collaborator (Everyone else).
 
 #### Collaborator (<a href="http://welcome.miami.edu/" target="_blank">University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a>)
 
-* Collaborators associated with the <a href="http://welcome.miami.edu/" target="_blank"> University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a> are listed as such solely for the purpose of documenting the project and pushing the final version of the project code to the Student Recruitment Success Pack repo which is housed under the <a href="https://github.com/SalesforceFoundation" target="_blank"> SalesforceFoundation Github Org</a>.
+* Collaborators associated with the <a href="http://welcome.miami.edu/" target="_blank"> University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a> are listed as such solely for the purpose of documenting the project and pushing the final version of the project code to the Interactions for Student Recruitment repo which is housed under the <a href="https://github.com/SalesforceFoundation" target="_blank"> SalesforceFoundation Github Org</a>.
 * Collaborators of this repo that are associated with the <a href="http://welcome.miami.edu/" target="_blank"> University of Miami</a> and/or <a href="https://www.sierra-cedar.com/" target="_blank">Sierra-Cedar</a> have the option of participating in the Role identified under the section: Collaborator (Everyone else).
 
 #### Collaborator (Everyone else)
@@ -31,7 +31,7 @@ It is intended to be short, flexible, and clear.
 
 ## Roadmap
 
-This section should outline the roadmap for the Student Recruitment Success Pack as it pertains to the University of Miami's vision for this project outside of it's currently delivered state.
+This section should outline the roadmap for the Interactions for Student Recruitment as it pertains to the University of Miami's vision for this project outside of it's currently delivered state.
 
 Considerations surrounding Phase 2, Phase 3, etc. should be included. Specifically the roadmap should help drive open source contributions that support a vision for the future state of this project.
 
@@ -41,7 +41,7 @@ As a project role does not necessarily control resources other than their own la
 
 ## How to become a Collaborator
 
-If you are interested in becoming a Collaborator of the Student Recruitment Success Pack project then we want to hear from you!
+If you are interested in becoming a Collaborator of the Interactions for Student Recruitment project then we want to hear from you!
 
 ### Prerequisites to becoming a Collaborator
 
@@ -61,25 +61,25 @@ If you are interested in becoming a Collaborator of the Student Recruitment Succ
 
 #### Install the <a href="https://github.com/SalesforceFoundation/HEDAP" target="_blank">HEDA code BASE</a> using the <a href="https://mrbelvedere.salesforcefoundation.org/mpinstaller/hed" target="_blank"> HEDA Installer</a>
 
-#### Install the Student Recruitment Success Pack Code Base using the Student Recruitment Success Pack Installer
+#### Install the Student Recruitment Success Pack Code Base using the Interactions for Student Recruitment Installer
 
 ### Contact information for becoming a Collaborator
 
 Contact jbryan@salesforce.com and provide the following information:
 
-* Subject: Github Collaborator Request for The Student Recruitment Success Pack
+* Subject: Github Collaborator Request for Interactions for Student Recruitment
 * Include your Github Profile link
 * Indicate that you've setup 2-factor authentication
 * Indicate that you've installed the HEDA Code Base
-* Indicate that you've installed the Student Recruitment Success Pack Code base
+* Indicate that you've installed the Interactions for Student Recruitment Pack Code base
 
 ## Where can I find the community?
 
 The Power of US Hub
 
-You can find the Student Recruitment Success Pack community in the the Salesforce.org Power of US Hub. Here you can connect with other community members who are using the Student Recruitment Success Pack. 
+You can find the Interactions for Student Recruitment community in the the Salesforce.org Power of US Hub. Here you can connect with other community members who are using the Interactions for Student Recruitment. 
 
-Click <a href="https://powerofus.force.com/_ui/core/chatter/groups/GroupProfilePage?g=0F9800000008jcN" target="_blank">here</a> to join the Student Recruitment Success Pack chatter group!
+Click <a href="https://powerofus.force.com/_ui/core/chatter/groups/GroupProfilePage?g=0F9800000008jcN" target="_blank">here</a> to join the Interactions for Student Recruitment chatter group!
 
 ## Acknowledgements
 
