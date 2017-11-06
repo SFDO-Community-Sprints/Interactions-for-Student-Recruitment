@@ -47,7 +47,7 @@ Below are some samples of the Interaction Processor Class and Interaction Mappin
     /*****************************************
     *File: INT_InteractionProcessor
     *Author: Sierra-Cedar
-    *Description: Processes new Interaction__c records by inserting/converting Leads, upserting pportunities, 
+    *Description: Processes new Interaction__c records by inserting/converting Leads, upserting Opportunities, 
     *updating Contacts, upserting Affiliations, and upserting CampaignMembers
     ******************************************/
 
