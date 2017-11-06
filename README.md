@@ -44,87 +44,90 @@ If you are interested in learning about the project roles, roadmap, how to becom
 ## Code Example
 Below are some samples of the Interaction Processor Class and Interaction Mapping Service Class. See the Interactions Technical Implementation Guide (Coming Soon!) for more information about these and the other classes and triggers included in *Interactions for Student Recruitment*.
 
-// File: INT_InteractionProcessor
-// Author: Sierra-Cedar
-// Description: Processes new Interaction__c records by inserting/converting Leads, upserting Opportunities, updating Contacts, upserting Affiliations, and upserting CampaignMembers
+    /*****************************************
+    *File: INT_InteractionProcessor
+    *Author: Sierra-Cedar
+    *Description: Processes new Interaction__c records by inserting/converting Leads, upserting pportunities, updating Contacts, upserting Affiliations, and upserting CampaignMembers
+    ******************************************/
 
-public class INT_InteractionProcessor {
-    private List<Interaction__c> dupeInteractions = new List<Interaction__c>();
-    private List<Lead> leadsToDelete = new List<Lead>();
-    private List<Opportunity> opportunitiesToUpsert = new List<Opportunity>();
-    private Map<Id, Lead> interactionIdToLead = new Map<Id, Lead>();
-    private Map<Id, Interaction__c> interactionMap = new Map<Id, Interaction__c>();
-    private Map<Id, Interaction__c> leadIdToInteractionMap = new Map<Id, Interaction__c>();
-    private Set<Id> leadIds = new Set<Id>();
+    public class INT_InteractionProcessor {
+        private List<Interaction__c> dupeInteractions = new List<Interaction__c>();
+        private List<Lead> leadsToDelete = new List<Lead>();
+        private List<Opportunity> opportunitiesToUpsert = new List<Opportunity>();
+        private Map<Id, Lead> interactionIdToLead = new Map<Id, Lead>();
+        private Map<Id, Interaction__c> interactionMap = new Map<Id, Interaction__c>();
+        private Map<Id, Interaction__c> leadIdToInteractionMap = new Map<Id, Interaction__c>();
+        private Set<Id> leadIds = new Set<Id>();
 
-    /**
-     * @description Main method for processing new Interaction__c records.
-     * @param interactionsToProcess, the List of new Interaction__c objects to process.
-     */
-    public void processInteractions(List<Interaction__c> newInteractions) {
+        /**
+         * @description Main method for processing new Interaction__c records.
+         * @param interactionsToProcess, the List of new Interaction__c objects to process.
+         */
+        public void processInteractions(List<Interaction__c> newInteractions) {
         List<Contact> contactsToUpdate = new List<Contact>();
         List<hed__Affiliation__c> affiliationsToUpsert = new List<hed__Affiliation__c>();
 
-        // Run duplicate pre-processing
+            // Run duplicate pre-processing
         List<Interaction__c> interactionsToProcess = duplicatePreProcessing(newInteractions);
-
-        // Set up Interaction Map for reference during processing.
+        
+            // Set up Interaction Map for reference during processing.
         interactionMap = new Map<Id, Interaction__c>(interactionsToProcess);
 
-        // Create Leads from new Interactions records.
+            // Create Leads from new Interactions records.
         List<Database.LeadConvert> newLeads = insertLeadsFromInteractions(interactionsToProcess);
 
-        // Create CampaignMembers to upsert from the Leads inserted if they have the proper Campaign Keys
+            // Create CampaignMembers to upsert from the Leads inserted if they have the proper Campaign Keys
         List<CampaignMember> campaignMembersToUpsert = createCampaignMembersFromLeads();
 
-        // Upsert Campaign Members from Leads
-        if (campaignMembersToUpsert.size() > 0) {
-            logPossibleErrors(Database.upsert(campaignMembersToUpsert, CampaignMember.Campaign_Member_Key__c, false));
-        }
+            // Upsert Campaign Members from Leads
+                if (campaignMembersToUpsert.size() > 0) {
+                    logPossibleErrors(Database.upsert(campaignMembersToUpsert, CampaignMember.Campaign_Member_Key__c, false));
+                    }
 
-        // Attempt initial conversion of leads.
-        List<Database.LeadConvert> possibleLeadsToReconvert = convertLeads(newLeads);
+            // Attempt initial conversion of leads.
+                List<Database.LeadConvert> possibleLeadsToReconvert = convertLeads(newLeads);
 
-        // Reconvert Leads with matched Contacts if duplicate errors.
-        if (possibleLeadsToReconvert.size() > 0) {
-            convertLeads(possibleLeadsToReconvert);
-        }
+            // Reconvert Leads with matched Contacts if duplicate errors.
+                if (possibleLeadsToReconvert.size() > 0) {
+                    convertLeads(possibleLeadsToReconvert);
+                }
 
-        // Upsert associated Opportunities using Opportunity_Key__c as the lookup Id.
-        if (opportunitiesToUpsert.size() > 0) {
-            logPossibleErrors(Database.upsert(opportunitiesToUpsert, Opportunity.Opportunity_Key__c, false));
-        }
-}
-
-
-/*****************************************
-* File: INT_InteractionMappingService
-* Author: Sierra-Cedar
-* Description: Caches Interaction_Mapping__c records for reference during Interactions processing
-******************************************/
-public class INT_InteractionMappingService {
-    private Map<String, Set<String>> skipMappingMap = new Map<String, Set<String>>();
-    private Map<String, List<Interaction_Mapping__c>> intMappingMap = new Map<String, List<Interaction_Mapping__c>>();
-
-    public INT_InteractionMappingService() {
-        for (Interaction_Mapping__c mapping : [
-            SELECT Skip_Mapping__c, Insert_Null__c, Target_Object_API_Name__c, Interaction_Source_Field_API_Name__c, Target_Field_API_Name__c
-            FROM Interaction_Mapping__c
-            WHERE Active__c = true
-        ]) {
-            if (!intMappingMap.containsKey(mapping.Target_Object_API_Name__c)) {
-                intMappingMap.put(mapping.Target_Object_API_Name__c, new List<Interaction_Mapping__c>{mapping});
-            } else {
-                intMappingMap.get(mapping.Target_Object_API_Name__c).add(mapping);
+            // Upsert associated Opportunities using Opportunity_Key__c as the lookup Id.
+                if (opportunitiesToUpsert.size() > 0) {
+                    logPossibleErrors(Database.upsert(opportunitiesToUpsert, Opportunity.Opportunity_Key__c, false));
+                }
             }
+        }
 
-            // Populate excluded sources map
-            if (!String.isEmpty(mapping.Skip_Mapping__c)) {
-                skipMappingMap.put(mapping.Id, new Set<String>(mapping.Skip_Mapping__c.split(';')));
+
+    /*****************************************
+    * File: INT_InteractionMappingService
+    * Author: Sierra-Cedar
+    * Description: Caches Interaction_Mapping__c records for reference during Interactions processing
+    ******************************************/
+    public class INT_InteractionMappingService {
+        private Map<String, Set<String>> skipMappingMap = new Map<String, Set<String>>();
+        private Map<String, List<Interaction_Mapping__c>> intMappingMap = new Map<String, List<Interaction_Mapping__c>>();
+
+        public INT_InteractionMappingService() {
+            for (Interaction_Mapping__c mapping : [
+                SELECT Skip_Mapping__c, Insert_Null__c, Target_Object_API_Name__c, Interaction_Source_Field_API_Name__c,                Target_Field_API_Name__c
+                FROM Interaction_Mapping__c
+                WHERE Active__c = true
+            ]) {
+                if (!intMappingMap.containsKey(mapping.Target_Object_API_Name__c)) {
+                    intMappingMap.put(mapping.Target_Object_API_Name__c, new List<Interaction_Mapping__c>{mapping});
+                } else {
+                    intMappingMap.get(mapping.Target_Object_API_Name__c).add(mapping);
+                }
+
+                // Populate excluded sources map
+                if (!String.isEmpty(mapping.Skip_Mapping__c)) {
+                    skipMappingMap.put(mapping.Id, new Set<String>(mapping.Skip_Mapping__c.split(';')));
+                }
             }
         }
     }
-}
 
 
 ## License
