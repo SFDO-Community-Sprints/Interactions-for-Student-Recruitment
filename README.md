@@ -23,29 +23,23 @@ If you are interested in learning about the project roles, roadmap, how to becom
 *Interactions for Student Recruitment* comes with a wealth of documentation and other resources to help admins, developers, and users implement, use, and customize Interactions. It is important to read through these materials before downloading the Interactions package, as they contain important information necessary for a successful implementation.
 
 ### Documentation Guides (Coming Soon!)
-<ul>
-  <li>Overview of Interactions – This overview document is a high-level look at all the features *Interactions for Student Recruitment* has to offer.</li>
-  <li>Interactions Learning Guide – The Learning Guide follows the experience of Stella, the admin, learning about Interactions and how best to implement the package at Connected University (CU). It also follows one of her end users, a recruiter at CU’s School of Business, and their journey to discover how Interactions can help them connect meaningfully with potential students.</li>
-  <li>User Guide – This guide is both for admins and end users (e.g. recruiters) to learn about best practices for using *Interactions for Student Recruitment* and all its features.</li>
-   <li>Installation and Configuration Guide – The Installation and Configuration Guide is an important resource for administrators looking to implement *Interactions for Student Recruitment* with step-by-step instructions for pre-install, install, and post-install requirements and recommendations.</li>
-   <li>Technical Implementation Guide – This guide is geared toward developers and admins experienced with Apex to learn more about how the *Interactions for Student Recruitment* classes function and some customization tips.</li>
-   <li>Data Dictionary – The Data Dictionary file is a comprehensive list of every metadata element included in the package (e.g. fields, picklist values, workflow rules, page layouts, etc.).</li>
-</ul>
+* Overview of Interactions – This overview document is a high-level look at all the features *Interactions for Student Recruitment* has to offer.
+* Interactions Learning Guide – The Learning Guide follows the experience of Stella, the admin, learning about Interactions and how best to implement the package at Connected University (CU). It also follows one of her end users, a recruiter at CU’s School of Business, and their journey to discover how Interactions can help them connect meaningfully with potential students.
+* User Guide – This guide is both for admins and end users (e.g. recruiters) to learn about best practices for using *Interactions for Student Recruitment* and all its features.
+* Installation and Configuration Guide – The Installation and Configuration Guide is an important resource for administrators looking to implement *Interactions for Student Recruitment* with step-by-step instructions for pre-install, install, and post-install requirements and recommendations.
+* Technical Implementation Guide – This guide is geared toward developers and admins experienced with Apex to learn more about how the *Interactions for Student Recruitment* classes function and some customization tips.
+* Data Dictionary – The Data Dictionary file is a comprehensive list of every metadata element included in the package (e.g. fields, picklist values, workflow rules, page layouts, etc.).
 
 ### Data Model Sheets (Coming Soon!)
-<ul>
-   <li>Interactions ERD – Take a look at the Interactions data model and how it utilizes standard Salesforce and HEDA objects and processes.</li>
-   <li>Processes Flow Chart and Swim-Lane Diagram – This flow chart and diagram presents the same information (the order of operations for the Interaction Processor) in different formats for your convenience.</li>
-   <li>Student Recruitment Model – This model shows a common path for a prospective student from being a purchased list name, to the point of inquiry and application, and then to a current student.</li>
-</ul>
+* Interactions ERD – Take a look at the Interactions data model and how it utilizes standard Salesforce and HEDA objects and processes.
+* Processes Flow Chart and Swim-Lane Diagram – This flow chart and diagram presents the same information (the order of operations for the Interaction Processor) in different formats for your convenience.
+* Student Recruitment Model – This model shows a common path for a prospective student from being a purchased list name, to the point of inquiry and application, and then to a current student.
 
 ### Additional Implementation Resources (Coming Soon!)
-<ul>
-   <li>Discovery Document – After all that documentation, it may seem daunting to figure out where to start, but never fear! The Discovery Document is here to streamline your discovery process. Use it to identify current business practices, data models, and integrations that can be managed by *Interactions for Student Recruitment*.</li>
-   <li>Project Plan Template – This template provides a basis for creating your own Project Plan to implement *Interactions for Student Recruitment*.</li>
-   <li>Communication and Training Plan Template – As with any major implementation, it is important to have a plan to keep users and stakeholders in the loop and ready for training when the time comes. This template gives you a starting point for building this plan.</li>
-   <li>Sample Data File – This file contains useful sample data that can be loaded into a configured org (with HEDA and *Interactions for Student Recruitment*) to test Interactions and see how the package works with real records.</li>
-</ul>
+* Discovery Document – After all that documentation, it may seem daunting to figure out where to start, but never fear! The Discovery Document is here to streamline your discovery process. Use it to identify current business practices, data models, and integrations that can be managed by *Interactions for Student Recruitment*.
+* Project Plan Template – This template provides a basis for creating your own Project Plan to implement *Interactions for Student Recruitment*.
+* Communication and Training Plan Template – As with any major implementation, it is important to have a plan to keep users and stakeholders in the loop and ready for training when the time comes. This template gives you a starting point for building this plan.
+* Sample Data File – This file contains useful sample data that can be loaded into a configured org (with HEDA and *Interactions for Student Recruitment*) to test Interactions and see how the package works with real records.
 
 ## Code Example
 Below are some samples of the Interaction Processor Class and Interaction Mapping Service Class. See the Interactions Technical Implementation Guide (Coming Soon!) for more information about these and the other classes and triggers included in *Interactions for Student Recruitment*.
