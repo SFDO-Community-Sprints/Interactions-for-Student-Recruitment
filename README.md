@@ -44,11 +44,10 @@ If you are interested in learning about the project roles, roadmap, how to becom
 ## Code Example
 Below are some samples of the Interaction Processor Class and Interaction Mapping Service Class. See the Interactions Technical Implementation Guide (Coming Soon!) for more information about these and the other classes and triggers included in *Interactions for Student Recruitment*.
 
-/****************************************** 
+/*****************************************
 File: INT_InteractionProcessor
-* Author: Sierra-Cedar
-* Description: Processes new Interaction__c records by inserting/converting Leads, upserting Opportunities,
-* updating Contacts, upserting Affiliations, and upserting CampaignMembers
+Author: Sierra-Cedar
+Description: Processes new Interaction__c records by inserting/converting Leads, upserting Opportunities, updating Contacts, upserting Affiliations, and upserting CampaignMembers
 ******************************************/
 public class INT_InteractionProcessor {
     private List<Interaction__c> dupeInteractions = new List<Interaction__c>();
