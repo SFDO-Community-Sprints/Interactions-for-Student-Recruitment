@@ -47,7 +47,8 @@ Below are some samples of the Interaction Processor Class and Interaction Mappin
     /*****************************************
     *File: INT_InteractionProcessor
     *Author: Sierra-Cedar
-    *Description: Processes new Interaction__c records by inserting/converting Leads, upserting pportunities, updating Contacts, upserting Affiliations, and upserting CampaignMembers
+    *Description: Processes new Interaction__c records by inserting/converting Leads, upserting pportunities, 
+    *updating Contacts, upserting Affiliations, and upserting CampaignMembers
     ******************************************/
 
     public class INT_InteractionProcessor {
@@ -111,7 +112,7 @@ Below are some samples of the Interaction Processor Class and Interaction Mappin
 
         public INT_InteractionMappingService() {
             for (Interaction_Mapping__c mapping : [
-                SELECT Skip_Mapping__c, Insert_Null__c, Target_Object_API_Name__c, Interaction_Source_Field_API_Name__c,                Target_Field_API_Name__c
+                SELECT Skip_Mapping__c, Insert_Null__c, Target_Object_API_Name__c, Interaction_Source_Field_API_Name__c, Target_Field_API_Name__c
                 FROM Interaction_Mapping__c
                 WHERE Active__c = true
             ]) {
