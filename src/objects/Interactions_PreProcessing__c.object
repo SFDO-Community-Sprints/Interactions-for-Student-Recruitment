@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Used to turn on/off Interaction pre-processing of duplicates during the Interactions import.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Whether or not the setting is active.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Whether or not the setting is active.</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Interactions Pre-Processing</label>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <compactLayouts>
+        <fullName>Applicant_Opportunity</fullName>
+        <fields>Name</fields>
+        <fields>Term__c</fields>
+        <fields>Academic_Interest__c</fields>
+        <fields>OwnerId</fields>
+        <label>Applicant Opportunity</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>Inquiry_Opportunity</fullName>
+        <fields>Name</fields>
+        <fields>Term__c</fields>
+        <fields>Recruitment_Interest__c</fields>
+        <fields>OwnerId</fields>
+        <label>Inquiry Opportunity</label>
+    </compactLayouts>
+    <fields>
+        <fullName>Academic_Interest__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The official interest the individual applies for. A lookup to Plan with a filter criteria of Record Type = Academic.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The official interest the individual applies for.</inlineHelpText>
+        <label>Academic Interest</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Plan__c.Type__c</field>
+                <operation>equals</operation>
+                <value>Academic</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Plan__c</referenceTo>
+        <relationshipLabel>Opportunities with Academic Interest</relationshipLabel>
+        <relationshipName>Academic_Interest_Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Admit_Type__c</fullName>
+        <description>The category the potential applicant falls into for recruitment segmentation (Ex: New student, Transfer student, etc.)</description>
+        <externalId>false</externalId>
+        <label>Admit Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Freshman</fullName>
+                    <default>false</default>
+                    <label>New Freshman</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Affiliated_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The organizational account (Ex: business, high school, college, etc.) a student is affiliated with. Filtered to exclude the Administrative Account Record Type.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The organizational account (Ex: business, high school, college, etc.) a student is affiliated with.</inlineHelpText>
+        <label>Affiliated Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Opportunities (Affiliated Account)</relationshipLabel>
+        <relationshipName>Affiliated_Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Application_Number__c</fullName>
+        <description>The external ID used by the application collection tool or database for matching to Applicant Opportunities. Only displays on the Applicant Opportunity page layout.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The external ID used by the application collection tool or database for matching to Applicant Opportunities.</inlineHelpText>
+        <label>Application Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Application_Submitted_Date__c</fullName>
+        <description>A date stamp (set by the Opportunity: Set Application Submitted Date workflow rule) to record when an Opportunity stage is changed to Applicant.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date when the Opportunity was changed from an inquiry to an applicant, based on Stage.</inlineHelpText>
+        <label>Application Submitted Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Career__c</fullName>
+        <description>Returns the Career from the Academic Interest if there is one, otherwise it returns the Career from the Recruitment Interest if there is one. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity.</description>
+        <externalId>false</externalId>
+        <formula>/*If an Academic Interest exists for the Opportunity, retrieve the associated Career*/ 
+IF(NOT(ISBLANK(Academic_Interest__c)),TEXT(Academic_Interest__r.Career__c), 
+
+/*IF not, retrieve the associated Career from the Recruitment Interest on the Opportunity*/ 
+TEXT(Recruitment_Interest__r.Career__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Career</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Connects this Opportunity to a Contact.</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Opportunities</relationshipLabel>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <description>Returns the Department from the Academic Interest if there is one, otherwise it returns the Department from the Recruitment Interest if there is one.</description>
+        <externalId>false</externalId>
+        <formula>/*If an Academic Interest exists for the Opportunity, retrieve the associated Department from the Academic Interest*/ 
+IF(NOT(ISBLANK(Academic_Interest__c)),(  Academic_Interest__r.Department__r.Name  ), 
+
+/*If not, retrieve the associated Department from the Recruitment Interset on the Opportunity*/ 
+(  Recruitment_Interest__r.Department__r.Name  ))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Department</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Inquiry_Source__c</fullName>
+        <description>Captures the first lead source when the opportunity record is created. This is set by the Opportunity: Set First Inquiry Source workflow rule.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The first Lead Source of the Opportunity.</inlineHelpText>
+        <label>First Inquiry Source</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Recruitment_Interest__c</fullName>
+        <description>Captures the first Recruitment Interest when the Opportunity record is created. This is set by the Opportunity: Set First Recruitment Interest workflow rule.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The first Recruitment Interest on the Opportunity.</inlineHelpText>
+        <label>First Recruitment Interest</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Inquiry_Date__c</fullName>
+        <description>A date stamp (set by the Opportunity: Set Inquiry Date workflow rule) to capture when an Opportunity is created.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The date when the Opportunity was created.</inlineHelpText>
+        <label>Inquiry Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Last_Campaign_Source__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Last Campaign Source</label>
+        <referenceTo>Campaign</referenceTo>
+        <relationshipLabel>Opportunities from Latest Campaign Source</relationshipLabel>
+        <relationshipName>Campaigns2</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>A unique external ID text field which determines whether an Interaction will create a new Opportunity or edit an existing Opportunity. Built using the Contact’s 18-digit ID, Career, Term’s 158-digit ID, and Recruitment/Academic Interest’s 18-digit ID (if applicable) to ensure uniqueness and support of both a centralized and decentralized recruitment process. Set by the Interactions Processor.</description>
+        <externalId>true</externalId>
+        <label>Opportunity Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Recruitment_Interest__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The marketable name for an official Academic Interest (or group of interests) that the individual is inquiring about. A lookup to Plan with a filter criteria of Record Type = Recruitment. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity for a decentralized recruitment process.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The marketable name for an official Academic Interest (or group of interests) that the individual is inquiring about.</inlineHelpText>
+        <label>Recruitment Interest</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Plan__c.Type__c</field>
+                <operation>equals</operation>
+                <value>Recruitment</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Plan__c</referenceTo>
+        <relationshipLabel>Opportunities with Recruitment Interest</relationshipLabel>
+        <relationshipName>Recruitment_Interest_Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Term__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The academic term a prospect is interested in. Tracked on the Opportunity when converted to a Contact. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The academic term a prospect is interested in.</inlineHelpText>
+        <label>Term</label>
+        <referenceTo>hed__Term__c</referenceTo>
+        <relationshipLabel>Opportunities</relationshipLabel>
+        <relationshipName>Opportunities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+</CustomObject>

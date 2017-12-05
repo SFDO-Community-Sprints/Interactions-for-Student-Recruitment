@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Used to map fields from source Object to target Object in the Interactions process.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>A checkbox to activate an Interaction Mapping record.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If checked, the Interaction Mapping is active</inlineHelpText>
+        <label>Active</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Insert_Null__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used for checkboxes to prevent unmapped checkboxes from being written over to false.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Used for checkboxes to prevent unmapped checkboxes from being written over to false.</inlineHelpText>
+        <label>Insert Null</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Interaction_Source_Field_API_Name__c</fullName>
+        <description>The source field on the Interaction object you would like to map to a Target Object field. The value in this field must be in API format and matches an existing field on Interaction.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The source field on the Interaction object you would like to map. Ensure this is in API format and matches the existing field on Interaction.</inlineHelpText>
+        <label>Interaction Source Field API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Skip_Mapping__c</fullName>
+        <description>Select the Interaction Sources that should ignore this mapping configuration. The values in this picklist should match the values in Interaction&apos;s &quot;Interaction Sources&quot; field.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the Interaction Sources that should ignore this import configuration.</inlineHelpText>
+        <label>Skip Mapping</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Manual Entry</fullName>
+                    <default>false</default>
+                    <label>Manual Entry</label>
+                </value>
+                <value>
+                    <fullName>Purchase List</fullName>
+                    <default>false</default>
+                    <label>Purchase List</label>
+                </value>
+                <value>
+                    <fullName>Student Information System</fullName>
+                    <default>false</default>
+                    <label>Student Information System</label>
+                </value>
+                <value>
+                    <fullName>Webform</fullName>
+                    <default>false</default>
+                    <label>Webform</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>8</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Target_Field_API_Name__c</fullName>
+        <description>The field on the Target Object you would like to map an Interaction field value to. The value in this field must be in API format and match an existing field on the Target Object.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The field on the Target Object you would like to map to. Ensure this is in API format and matches the existing field on the Target Object.</inlineHelpText>
+        <label>Target Field API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Target_Object_API_Name__c</fullName>
+        <description>The API name of the Target Object to map Interaction data to. When adding new values, ensure that you use the API name of the object.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the Target Object to map Interaction data to.</inlineHelpText>
+        <label>Target Object API Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CampaignMember</fullName>
+                    <default>false</default>
+                    <label>CampaignMember</label>
+                </value>
+                <value>
+                    <fullName>Contact</fullName>
+                    <default>false</default>
+                    <label>Contact</label>
+                </value>
+                <value>
+                    <fullName>hed__Affiliation__c</fullName>
+                    <default>false</default>
+                    <label>hed__Affiliation__c</label>
+                </value>
+                <value>
+                    <fullName>Lead</fullName>
+                    <default>false</default>
+                    <label>Lead</label>
+                </value>
+                <value>
+                    <fullName>Opportunity</fullName>
+                    <default>false</default>
+                    <label>Opportunity</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Interaction Mapping</label>
+    <listViews>
+        <fullName>Affiliation</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Target_Object_API_Name__c</columns>
+        <columns>Target_Field_API_Name__c</columns>
+        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Insert_Null__c</columns>
+        <columns>Skip_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Target_Object_API_Name__c</field>
+            <operation>equals</operation>
+            <value>hed__Affiliation__c</value>
+        </filters>
+        <label>Affiliation</label>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Target_Object_API_Name__c</columns>
+        <columns>Target_Field_API_Name__c</columns>
+        <columns>Insert_Null__c</columns>
+        <columns>Skip_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>CampaignMember</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Target_Object_API_Name__c</columns>
+        <columns>Target_Field_API_Name__c</columns>
+        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Insert_Null__c</columns>
+        <columns>Skip_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Target_Object_API_Name__c</field>
+            <operation>equals</operation>
+            <value>CampaignMember</value>
+        </filters>
+        <label>Campaign Member</label>
+    </listViews>
+    <listViews>
+        <fullName>Contact</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Target_Object_API_Name__c</columns>
+        <columns>Target_Field_API_Name__c</columns>
+        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Insert_Null__c</columns>
+        <columns>Skip_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Target_Object_API_Name__c</field>
+            <operation>equals</operation>
+            <value>Contact</value>
+        </filters>
+        <label>Contact</label>
+    </listViews>
+    <listViews>
+        <fullName>Lead</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Target_Object_API_Name__c</columns>
+        <columns>Target_Field_API_Name__c</columns>
+        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Insert_Null__c</columns>
+        <columns>Skip_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Target_Object_API_Name__c</field>
+            <operation>equals</operation>
+            <value>Lead</value>
+        </filters>
+        <label>Lead</label>
+    </listViews>
+    <listViews>
+        <fullName>Opportunity</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Target_Object_API_Name__c</columns>
+        <columns>Target_Field_API_Name__c</columns>
+        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Insert_Null__c</columns>
+        <columns>Skip_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Target_Object_API_Name__c</field>
+            <operation>equals</operation>
+            <value>Opportunity</value>
+        </filters>
+        <label>Opportunity</label>
+    </listViews>
+    <nameField>
+        <displayFormat>INTMap-{000000}</displayFormat>
+        <label>Interaction Mapping Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Interaction Mappings</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Active__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Target_Object_API_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Target_Field_API_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Interaction_Source_Field_API_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Insert_Null__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Skip_Mapping__c</customTabListAdditionalFields>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
+        <excludedStandardButtons>Accept</excludedStandardButtons>
+        <lookupDialogsAdditionalFields>Active__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Target_Object_API_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Target_Field_API_Name__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Active__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Target_Object_API_Name__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Target_Field_API_Name__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Active__c</searchFilterFields>
+        <searchFilterFields>Insert_Null__c</searchFilterFields>
+        <searchFilterFields>Target_Object_API_Name__c</searchFilterFields>
+        <searchResultsAdditionalFields>Active__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Target_Object_API_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Target_Field_API_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Interaction_Source_Field_API_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Insert_Null__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Skip_Mapping__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

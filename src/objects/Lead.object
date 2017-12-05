@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Admit_Type__c</fullName>
+        <description>The category the potential applicant falls into for recruitment segmentation (Ex: New student, Transfer student, etc.)</description>
+        <externalId>false</externalId>
+        <label>Admit Type</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New Freshman</fullName>
+                    <default>false</default>
+                    <label>New Freshman</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Affiliated_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The organizational account (Ex: business, high school, college, etc.) a student is affiliated with. This field along with the Affiliation Role, Affiliation Status, and Primary Affiliation fields creates an Affiliation when converted to a Contact. Filtered to exclude the Administrative Account Record Type.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the organizational account (Ex: business, high school, college, etc.) a student is affiliated with.</inlineHelpText>
+        <label>Affiliated Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Leads</relationshipLabel>
+        <relationshipName>Leads</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Affiliation_Role__c</fullName>
+        <description>The role associated to the Affiliated Account, used in the Interaction Process.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the role for the affiliation with an organizational account.</inlineHelpText>
+        <label>Affiliation Role</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Advisor</fullName>
+                    <default>false</default>
+                    <label>Advisor</label>
+                </value>
+                <value>
+                    <fullName>Student</fullName>
+                    <default>false</default>
+                    <label>Student</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Birthdate__c</fullName>
+        <externalId>false</externalId>
+        <label>Birthdate</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Career__c</fullName>
+        <description>Returns the Career of the Recruitment Plan, if there is one.</description>
+        <externalId>false</externalId>
+        <formula>TEXT( Recruitment_Interest__r.Career__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Career</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Constituent_ID__c</fullName>
+        <description>A unique external ID field to house a prospect or student&apos;s ID for integration or manual data loading processes. It is also the identification code to be used for Lead Matching Rules as part of the Interaction process.</description>
+        <externalId>false</externalId>
+        <label>Constituent ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ethnicity__c</fullName>
+        <description>Based on IPEDs values, which also align with the corresponding HEDA field on Contact.</description>
+        <externalId>false</externalId>
+        <label>Ethnicity</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Hispanic or Latino</fullName>
+                    <default>false</default>
+                    <label>Hispanic or Latino</label>
+                </value>
+                <value>
+                    <fullName>Not Hispanic or Latino</fullName>
+                    <default>false</default>
+                    <label>Not Hispanic or Latino</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Gender__c</fullName>
+        <externalId>false</externalId>
+        <label>Gender</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Female</fullName>
+                    <default>false</default>
+                    <label>Female</label>
+                </value>
+                <value>
+                    <fullName>Male</fullName>
+                    <default>false</default>
+                    <label>Male</label>
+                </value>
+                <value>
+                    <fullName>Unknown</fullName>
+                    <default>false</default>
+                    <label>Unknown</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Primary_Affiliation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Tracks whether the Affiliated Account is considered primary, used in the Interaction process.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check if the affiliation to the organizational account should be considered primary after Lead convert.</inlineHelpText>
+        <label>Primary Affiliation</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Race__c</fullName>
+        <description>Based on IPEDs values, which also align with the corresponding HEDA field on Contact.</description>
+        <externalId>false</externalId>
+        <label>Race</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>American Indian or Alaska Native</fullName>
+                    <default>false</default>
+                    <label>American Indian or Alaska Native</label>
+                </value>
+                <value>
+                    <fullName>Black or African American</fullName>
+                    <default>false</default>
+                    <label>Black or African American</label>
+                </value>
+                <value>
+                    <fullName>Native Hawaiian or Other Pacific Islander</fullName>
+                    <default>false</default>
+                    <label>Native Hawaiian or Other Pacific Islander</label>
+                </value>
+                <value>
+                    <fullName>White</fullName>
+                    <default>false</default>
+                    <label>White</label>
+                </value>
+                <value>
+                    <fullName>Asian</fullName>
+                    <default>false</default>
+                    <label>Asian</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Recruitment_Interest__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The marketable name for an official Academic Interest (or group of interests) that the individual is inquiring about. A lookup to Plan with a filter criteria of Record Type = Recruitment. Tracked on the Opportunity when converted to a Contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The marketable name for an official Academic Interest (or group of Interests) that the individual is inquiring about.</inlineHelpText>
+        <label>Recruitment Interest</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Plan__c.Type__c</field>
+                <operation>equals</operation>
+                <value>Recruitment</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>Plan__c</referenceTo>
+        <relationshipLabel>Leads with Recruitment Interest</relationshipLabel>
+        <relationshipName>Recruitment_Interest_Leads</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Term__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The academic term a prospect is interested in. Tracked on the Opportunity when converted to a Contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The academic term a prospect is interested in.</inlineHelpText>
+        <label>Term</label>
+        <referenceTo>hed__Term__c</referenceTo>
+        <relationshipLabel>Leads</relationshipLabel>
+        <relationshipName>Leads</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+</CustomObject>

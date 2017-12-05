@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Campaign_Member_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Used by the Interactions process to update an existing Campaign Member. Set to Lead.ID + * + Campaign.ID. Also updated by a workflow rule.</description>
+        <externalId>true</externalId>
+        <inlineHelpText>Used by the Interactions process to update an existing Campaign Member.</inlineHelpText>
+        <label>Campaign Member Key</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+</CustomObject>
