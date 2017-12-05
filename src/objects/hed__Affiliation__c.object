@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Upsert_Key__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>This field houses the unique ID key value (set by the Affiliation: Update Upsert Key workflow rule) used by the Interaction Processor to determine whether to create a new Affiliation or update an existing Affiliation. The standard key format is: ContactID.AffilAccountID</description>
+        <externalId>true</externalId>
+        <label>Upsert Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+</CustomObject>

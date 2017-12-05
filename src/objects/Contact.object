@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Constituent_ID__c</fullName>
+        <description>A unique external ID field to house a prospect or student&apos;s ID for integration or manual data loading processes. It is also the identification code to be used for Contact Matching Rules as part of the Interaction process.</description>
+        <externalId>false</externalId>
+        <label>Constituent ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Primary_Academic_Program__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Primary Academic Program</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Students</relationshipLabel>
+        <relationshipName>Academic_Program_Members</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Primary_Educational_Institution__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Primary Educational Institution</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Institution Members</relationshipLabel>
+        <relationshipName>Institution_Members</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+</CustomObject>
