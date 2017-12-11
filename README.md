@@ -33,11 +33,7 @@ If you are interested in learning about the project roles, roadmap, how to becom
 * <a href="https://github.com/SalesforceFoundation/Interactions-for-Student-Recruitment/blob/master/Docs/Technical%20Implementation%20Guide%20-%20Interactions%20for%20Student%20Recruitment.pdf" target="_blank">Technical Implementation Guide</a> – This guide is geared toward developers and admins experienced with Apex to learn more about how the *Interactions for Student Recruitment* classes function and some customization tips.
 * <a href="https://github.com/SalesforceFoundation/Interactions-for-Student-Recruitment/blob/master/Docs/Data%20Dictionary%20-%20Interactions%20for%20Student%20Recruitment.xlsx" target="_blank">Data Dictionary</a> – The Data Dictionary file is a comprehensive list of every metadata element included in the package (e.g. fields, picklist values, workflow rules, page layouts, etc.).
 * <a href="https://github.com/SalesforceFoundation/Interactions-for-Student-Recruitment/blob/master/Docs/Implementation%20FAQs%20-%20Interactions%20for%20Student%20Recruitment.pdf" target="_blank">Implementation FAQs</a> – This PDF goes over frequently asked questions about implementing *Interactions for Student Recruitment*.
-
-### Data Model Sheets (Coming Soon!)
-* Interactions ERD – Take a look at the Interactions data model and how it utilizes standard Salesforce and HEDA objects and processes.
-* Processes Flow Chart and Swim-Lane Diagram – This flow chart and diagram presents the same information (the order of operations for the Interaction Processor) in different formats for your convenience.
-* Student Recruitment Model – This model shows a common path for a prospective student from being a purchased list name, to the point of inquiry and application, and then to a current student.
+* <a href="https://github.com/SalesforceFoundation/Interactions-for-Student-Recruitment/blob/master/Docs/Data%20and%20Process%20Diagrams.pdf" target="_blank">Data and Process Diagrams</a> – This reference guide walks through the models that one should understand before implementing *Interactions for Student Recruitment*.
 
 ### Additional Implementation Resources
 * Discovery Document (Coming Soon!) – After all that documentation, it may seem daunting to figure out where to start, but never fear! The Discovery Document is here to streamline your discovery process. Use it to identify current business practices, data models, and integrations that can be managed by *Interactions for Student Recruitment*.
