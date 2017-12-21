@@ -29,50 +29,6 @@ It is intended to be short, flexible, and clear.
 * Committed to 100% tests passing for all Pull Requests
 * Has full commit/merge access to the relevant repositories
 
-## Roadmap
-
-This section should outline the roadmap for the Interactions for Student Recruitment as it pertains to the University of Miami's vision for this project outside of it's currently delivered state.
-
-Considerations surrounding Phase 2, Phase 3, etc. should be included. Specifically the roadmap should help drive open source contributions that support a vision for the future state of this project.
-
-All project roles should work together to determine the best opportunities for the improvement of the project. This should produce direction for the project, which should be highlighted in the Roadmap.
-
-As a project role does not necessarily control resources other than their own labor, they should encourage contributors to participate in furthering development of the project toward the goals of the Roadmap.
-
-## How to become a Collaborator
-
-If you are interested in becoming a Collaborator of the Interactions for Student Recruitment project then we want to hear from you!
-
-### Prerequisites to becoming a Collaborator
-
-#### You will need to get setup with 2-factor authentication
-
-2FA is required by the <a href="https://github.com/SalesforceFoundation" target="_blank">SalesforceFoundation Github Org</a> before granting the role of Collaborator.
-
-* <a href="https://help.github.com/articles/configuring-two-factor-authentication-via-text-message/" target="_blank">Configuring two-factor authentication via text message</a>
-* <a href="https://help.github.com/articles/providing-your-2fa-authentication-code/" target="_blank">Providing your 2FA authentication code</a>
-* <a href="https://help.github.com/articles/recovering-your-account-if-you-lost-your-2fa-credentials/" target="_blank">Recovering your account if you lost your 2FA credentials</a>
-
-#### Obtain either a Salesforce Developer Org or a Salesforce DX Scratch Org
-
-* Click <a href="https://developer.salesforce.com/signup" target="_blank">here</a> to get started with a Developer Org
-* Click <a href="https://trailhead.salesforce.com/en/trails/sfdx_get_started">here</a> to learn how to Get Started with Salesforce DX
-  * Click <a href="https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm">here</a> to access the Salesforce DX Developers Guide
-
-#### Install the <a href="https://github.com/SalesforceFoundation/HEDAP" target="_blank">HEDA code BASE</a> using the <a href="https://mrbelvedere.salesforcefoundation.org/mpinstaller/hed" target="_blank"> HEDA Installer</a>
-
-#### Install Interactions for Student Recruitment Code Base using the Interactions for Student Recruitment Installer
-
-### Contact information for becoming a Collaborator
-
-Contact jbryan@salesforce.com and provide the following information:
-
-* Subject: Github Collaborator Request for Interactions for Student Recruitment
-* Include your Github Profile link
-* Indicate that you've setup 2-factor authentication
-* Indicate that you've installed the HEDA Code Base
-* Indicate that you've installed the Interactions for Student Recruitment Pack Code base
-
 ## Where can I find the community?
 
 The Power of US Hub
