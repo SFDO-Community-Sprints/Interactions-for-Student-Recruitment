@@ -3,15 +3,17 @@
 * Author: Sierra-Cedar
 * Description: Unit Tests for INT_InteractionProcessor.cls
 ******************************************/
-@IsTest
+@isTest
 private class INT_InteractionProcessor_TEST {
-    @testSetup static void setUpTest() {
+    @testSetup
+    static void setUpTest() {
         // Create and insert Interaction Mapping Test Data
         List<Interaction_Mapping__c> testMappings = INT_TestDataFactory.createTestMappings();
         insert testMappings;
     }
 
-    static testMethod void testInsertDupeLeadsOnlyInImport() {
+    @isTest
+    static void testInsertDupeLeadsOnlyInImport() {
         // Arrange
         List<Interaction__c> interactionsToInsert = new List<Interaction__c>();
 
@@ -61,7 +63,8 @@ private class INT_InteractionProcessor_TEST {
                 'Duplicate pre-processing should have prevented the processing of duplicate records.');
     }
 
-    static testMethod void testBulkInsertLeadsOnly() {
+    @isTest
+    static void testBulkInsertLeadsOnly() {
         // Arrange
         List<Interaction__c> interactionsToInsert = INT_TestDataFactory.createBulkTestInteractions();
 
@@ -75,14 +78,14 @@ private class INT_InteractionProcessor_TEST {
         Test.stopTest();
 
         // Assert
-        List<Lead> leads = [SELECT FirstName, LastName FROM Lead];
         List<Contact> contacts = [SELECT Name, AccountId FROM Contact];
         System.assert(contacts.size() == 0);
         List<Account> accounts = [SELECT Name FROM Account];
         System.assert(accounts.size() == 0);
     }
 
-    static testMethod void testBulkInteractionInsert() {
+    @isTest
+    static void testBulkInteractionInsert() {
         // Arrange
         List<Interaction__c> interactionsToInsert = INT_TestDataFactory.createBulkTestInteractions();
 
@@ -130,7 +133,8 @@ private class INT_InteractionProcessor_TEST {
         }
     }
 
-    static testMethod void testPreProcessing() {
+    @isTest
+    static void testPreProcessing() {
         // Arrange
         List<Interaction__c> interactionsToInsert = new List<Interaction__c>();
 
@@ -175,7 +179,8 @@ private class INT_InteractionProcessor_TEST {
         System.assert(interactions[1].Interaction_Status__c == 'Imported');
     }
 
-    static testMethod void testOpportunityCreation() {
+    @isTest
+    static void testOpportunityCreation() {
         // Arrange
         Map<String, Schema.RecordTypeInfo> accRTInfo = Account.SObjectType.getDescribe().getRecordTypeInfosByName();
 
@@ -273,7 +278,8 @@ private class INT_InteractionProcessor_TEST {
         System.assertEquals(assertInteraction.Career__c, assertOppty.Career__c, 'Career__c should have been copied over to Opportunity.');
     }
 
-    static testMethod void testSkipMappingSources() {
+    @isTest
+    static void testSkipMappingSources() {
         // Arrange
         List<Interaction__c> interactionsToInsert = new List<Interaction__c>();
 
@@ -303,7 +309,8 @@ private class INT_InteractionProcessor_TEST {
         System.assert(accountMap.size() == 1, '1 Account Expected');
     }
 
-    static testMethod void testCampaignMemberCreation() {
+    @isTest
+    static void testCampaignMemberCreation() {
         // Arrange
         List<Campaign> testCampaigns = new List<Campaign>();
 
@@ -330,8 +337,6 @@ private class INT_InteractionProcessor_TEST {
         Test.stopTest();
 
         // Assert
-        List<Interaction__c> interactions = [SELECT First_Name__c, Last_Name__c, Email__c, Gender__c FROM Interaction__c];
-
         List<Lead> assertLeads = [SELECT FirstName, LastName FROM Lead];
         System.assert(assertLeads.size() == 0, 'Lead count expected to be at 0. Once converted, the Leads should be deleted');
 
@@ -356,5 +361,54 @@ private class INT_InteractionProcessor_TEST {
         System.assert(campaignMemberMap.containsKey(testAddlCampaign.Id), 'CampaignMember should exist for this Campaign.');
         System.assertEquals(testAddlCampaign.Id, campaignMemberMap.get(testAddlCampaign.Id).CampaignId, 'CampaignMember should have been created for test Campaign.');
         System.assertEquals(assertContacts[0].Id, campaignMemberMap.get(testAddlCampaign.Id).ContactId, 'Contact Id should match Contact created.');
+    }
+
+    @isTest
+    static void testCMCreationWithExistingLeadAndCM() {
+        // Arrange
+        Lead testLead = new Lead(
+            FirstName = 'Tony',
+            LastName = 'Stark',
+            Email = 'test@nomail.com',
+            Company = 'Stark, Tony'
+        );
+        insert testLead;
+
+        Campaign testCampaign = new Campaign(
+            Name = 'Test Campaign'
+        );
+        insert testCampaign;
+
+        Campaign testCampaign2 = new Campaign(
+            Name = 'Test Campaign 2'
+        );
+        insert testCampaign2;
+
+        CampaignMember testCM = new CampaignMember(
+            LeadId = testLead.Id,
+            CampaignId = testCampaign.Id,
+            Status = 'Added to Campaign'
+        );
+        insert testCM;
+
+        Interaction__c testInteraction = new Interaction__c(
+            First_Name__c = 'Tony',
+            Last_Name__c = 'Stark',
+            Email__c = 'test@nomail.com',
+            Campaign__c = testCampaign2.Id,
+            Campaign_Member_Status__c = 'Added to Campaign'
+        );
+
+        // Act
+        Test.startTest();
+        insert testInteraction;
+        Test.stopTest();
+
+        // Assert
+        Interaction__c assertInteraction = [SELECT Interaction_Status__c FROM Interaction__c WHERE Id = :testInteraction.Id];
+        System.assertEquals('Imported', assertInteraction.Interaction_Status__c, 'Interaction should have successfully imported.');
+
+        List<CampaignMember> assertCampaignMembers = [SELECT Contact.FirstName, Campaign.Name, Status, LeadId, ContactId FROM CampaignMember];
+        System.assertEquals(2, assertCampaignMembers.size(), '2 Campaign Members should have been created for the Lead/Interaction.');
     }
 }
