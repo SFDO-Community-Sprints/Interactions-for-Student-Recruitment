@@ -11,7 +11,8 @@ public class INT_InteractionProcessor {
     private Map<Id, Lead> interactionIdToLead = new Map<Id, Lead>();
     private Map<Id, Interaction__c> interactionMap = new Map<Id, Interaction__c>();
     private Map<Id, Interaction__c> leadIdToInteractionMap = new Map<Id, Interaction__c>();
-    private Set<Id> leadIds = new Set<Id>();
+    private Set<Id> contactIds = new Set<Id>();
+    private Set<Id> existingLeadIds = new Set<Id>();
 
     private INT_InteractionMappingService intMappingService {
         get {
@@ -25,10 +26,10 @@ public class INT_InteractionProcessor {
         set;
     }
 
-    private Map<Id, Id> campaignIdMap {
+    private Map<String, Id> campaignIdMap {
         get {
             if (campaignIdMap == null) {
-                campaignIdMap = new Map<Id, Id>();
+                campaignIdMap = new Map<String, Id>();
                 Set<String> referenceIds = new Set<String>();
 
                 for (SObject interaction : Trigger.new) {
@@ -63,14 +64,14 @@ public class INT_InteractionProcessor {
 
                 // Loop through current Campaign Members and build campaignMemberMap
                 for (CampaignMember cm : [
-                    SELECT Status, ContactId, LeadId, CampaignId, Campaign.Campaign_Key__c
+                    SELECT Status, CampaignId, Campaign.Campaign_Key__c, Lead_Contact_ID__c
                     FROM CampaignMember
-                    WHERE LeadId IN :leadIds
+                    WHERE ContactId IN :contactIds
                 ]) {
                     if (!String.isEmpty(cm.Campaign.Campaign_Key__c)) {
-                        campaignMemberMap.put(String.valueOf(cm.LeadId + '.' + cm.Campaign.Campaign_Key__c), cm);
+                        campaignMemberMap.put(String.valueOf(cm.Lead_Contact_ID__c + '.' + cm.Campaign.Campaign_Key__c), cm);
                     } else {
-                        campaignMemberMap.put(String.valueOf(cm.LeadId + '.' + cm.CampaignId), cm);
+                        campaignMemberMap.put(String.valueOf(cm.Lead_Contact_ID__c + '.' + cm.CampaignId), cm);
                     }
                 }
             }
@@ -89,6 +90,33 @@ public class INT_InteractionProcessor {
             }
 
             return convertStatus;
+        }
+
+        set;
+    }
+
+    // Populate a Map of Existing Leads to map fields to new Interactions.
+    private Map<Id, Lead> existingLeadMap {
+        get {
+            if (existingLeadMap == null
+                && !existingLeadIds.isEmpty()
+                && intMappingService.intMappingMap != null
+                && intMappingService.intMappingMap.containsKey('Interaction__c')
+            ) {
+                String soqlString = 'SELECT Id';
+
+                for (Interaction_Mapping__c mapping : intMappingService.intMappingMap.get('Interaction__c')) {
+                    soqlString += ', ' + mapping.Source_Field_API_Name__c;
+                }
+
+                soqlString = soqlString.removeEnd(',').trim();
+                soqlString += ' FROM Lead WHERE Id IN :existingLeadIds';
+                existingLeadMap = new Map<Id, Lead>((List<Lead>) Database.query(soqlString));
+            } else if (existingLeadMap == null) {
+                existingLeadMap = new Map<Id, Lead>();
+            }
+
+            return existingLeadMap;
         }
 
         set;
@@ -122,7 +150,7 @@ public class INT_InteractionProcessor {
         }
 
         // Create CampaignMembers to upsert from the Leads inserted if they have the proper Campaign Keys
-        List<CampaignMember> campaignMembersToUpsert = createCampaignMembersFromLeads();
+        List<CampaignMember> campaignMembersToUpsert = createCampaignMembersFromLeads(true);
 
         // Upsert Campaign Members from Leads
         if (campaignMembersToUpsert.size() > 0) {
@@ -156,20 +184,20 @@ public class INT_InteractionProcessor {
         // Create Leads from new Interactions records.
         List<Database.LeadConvert> newLeads = insertLeadsFromInteractions(interactionsToProcess);
 
-        // Create CampaignMembers to upsert from the Leads inserted if they have the proper Campaign Keys
-        List<CampaignMember> campaignMembersToUpsert = createCampaignMembersFromLeads();
-
-        // Upsert Campaign Members from Leads
-        if (campaignMembersToUpsert.size() > 0) {
-            logPossibleErrors(Database.upsert(campaignMembersToUpsert, CampaignMember.Campaign_Member_Key__c, false));
-        }
-
-        // Attempt initial converstion of leads.
+        // Attempt initial conversion of leads.
         List<Database.LeadConvert> possibleLeadsToReconvert = convertLeads(newLeads);
 
         // Reconvert Leads with matched Contacts if duplicate errors.
         if (possibleLeadsToReconvert.size() > 0) {
             convertLeads(possibleLeadsToReconvert);
+        }
+
+        // Create CampaignMembers to upsert from the Leads inserted if they have the proper Campaign Keys
+        List<CampaignMember> campaignMembersToUpsert = createCampaignMembersFromLeads(false);
+
+        // Upsert Campaign Members from Leads
+        if (campaignMembersToUpsert.size() > 0) {
+            logPossibleErrors(Database.upsert(campaignMembersToUpsert, CampaignMember.Campaign_Member_Key__c, false));
         }
 
         // Upsert associated Opportunities using Opportunity_Key__c as the lookup Id.
@@ -213,11 +241,6 @@ public class INT_InteractionProcessor {
         // Upsert Affiliations using the Upsert_Key__c
         if (affiliationsToUpsert.size() > 0) {
             logPossibleErrors(Database.upsert(affiliationsToUpsert, hed__Affiliation__c.Upsert_Key__c, false));
-        }
-
-        // Upsert CampaignMembers
-        if (campaignMembersToUpsert.size() > 0) {
-            logPossibleErrors(Database.upsert(campaignMembersToUpsert, CampaignMember.Campaign_Member_Key__c, false));
         }
 
         // Add any duplicates found and update the Interactions with new Status from processing.
@@ -297,7 +320,7 @@ public class INT_InteractionProcessor {
             intMappingService.applyDataToSObject(interaction, newLead);
         }
 
-        leadConverts.addAll(insertLeads(interactionIdToLead.values()));
+        leadConverts.addAll(insertLeads(interactionIdToLead.values(), interactions));
 
         return leadConverts;
     }
@@ -307,57 +330,55 @@ public class INT_InteractionProcessor {
      * @param leads, a List of Lead objects to insert.
      * @return leadsToConvert, a List of Database.LeadConvert records to convert.
      */
-    private List<Database.LeadConvert> insertLeads(List<Lead> leadsToInsert) {
+    private List<Database.LeadConvert> insertLeads(List<Lead> leadsToInsert, List<Interaction__c> interactions) {
+        Integer leadIndex = 0;
         Database.SaveResult[] srlist = Database.insert(leadsToInsert, false); // Insert Leads
         List<Database.LeadConvert> leadsToConvert = new List<Database.LeadConvert>();
-        Map<Id, Database.SaveResult> leadResultMap = new Map<Id, Database.SaveResult>();
 
-        for (Database.SaveResult sr : srlist) leadResultMap.put(sr.getId(), sr);
+        for (Database.SaveResult sr : srlist)  {
+            Interaction__c interaction = interactions[leadIndex];
 
-        for (Id intearctionId : interactionIdToLead.keySet()) {
-            if (leadResultMap.containsKey(interactionIdToLead.get(intearctionId).Id)) {
-                Database.SaveResult sr = leadResultMap.get(interactionIdToLead.get(intearctionId).Id);
-                Id leadId = interactionIdToLead.get(intearctionId).Id;
-                Interaction__c interaction = interactionMap.get(intearctionId);
+            if (sr.isSuccess()) { // Check if insert was a success
+                // On success, prepare to convert inserted lead.
+                Id leadId = sr.getId();
+                leadsToConvert.add(createLeadConvert(interactionMap.get(interaction.Id), leadId, true));
+                interaction.Lead__c = leadId; // Copy new Lead Id to the Interaction__c record.
+                if (!interaction.Lead_Only__c) leadsToDelete.add(new Lead(Id = leadId)); // Newly created leads will be deleted
+            } else {
+                /**
+                 * If there are errors, loop through them and either log the error on the Interaction.
+                 * or see if there's a duplicate and use that instead.
+                 */
+                for (Database.Error error : sr.getErrors()) {
+                    if (error.getStatusCode() == StatusCode.DUPLICATES_DETECTED) {
+                        Database.DuplicateError dupErrorError = (Database.DuplicateError) error;
 
-                if (sr.isSuccess()) { // Check if insert was a success
-                    // On success, prepare to convert inserted lead.
-                    leadIds.add(sr.getId());
-                    leadsToConvert.add(createLeadConvert(interactionMap.get(intearctionId), leadId, true));
-                    interaction.Lead__c = leadId;
-                    leadIdToInteractionMap.put(interaction.Lead__c, interaction);
+                        for (Datacloud.MatchResult matchResult : dupErrorError.getDuplicateResult().getMatchResults()) {
+                            for (Datacloud.MatchRecord match : matchResult.getMatchRecords()) {
+                                // Grab matched record to use instead of the new one.
+                                interaction.Lead__c = match.getRecord().Id;
 
-                    if (interaction.Lead_Only__c == false) {
-                        leadsToDelete.add(new Lead(Id = leadId)); // Newly created leads will be deleted
-                    }
-                } else {
-                    /**
-                     * If there are errors, loop through them and either log the error on the Interaction.
-                     * or see if there's a duplicate and use that instead.
-                     */
-                    for (Database.Error error : sr.getErrors()) {
-                        if (error.getStatusCode() == StatusCode.DUPLICATES_DETECTED) {
-                            Database.DuplicateError dupErrorError = (Database.DuplicateError) error;
+                                // Add existing Lead Ids to List to query for data to copy to the Interaction later.
+                                existingLeadIds.add(match.getRecord().Id);
 
-                            for (Datacloud.MatchResult matchResult : dupErrorError.getDuplicateResult().getMatchResults()) {
-                                for (Datacloud.MatchRecord match : matchResult.getMatchRecords()) {
-                                    // Grab matched record to use instead of the new one.
-                                    leadIds.add(match.getRecord().Id);
-                                    interaction.Lead__c = match.getRecord().Id;
-                                    leadIdToInteractionMap.put(interaction.Lead__c, interaction);
-
-                                    if (interaction.Lead_Only__c == false) {
+                                if (interaction.Lead_Only__c == true) {
+                                    leadIdToInteractionMap.put(interaction.Lead__c,interaction);
+                                } else {
+                                    // The matched Lead doesn't exist in the current transaction, so add it to List to convert.
+                                    if (leadIdToInteractionMap.get(match.getRecord().Id) == null) {
                                         leadsToConvert.add(createLeadConvert(interaction, match.getRecord().Id, true));
                                     }
                                 }
                             }
-                        } else { // Catch-all for all other errors
-                            interaction.Audit_Reason__c += ' Reason: Error during Lead insert - ' + error.getMessage() + '.';
-                            System.debug('Error during Lead insert - ' + error.getMessage() + '.');
                         }
+                    } else { // Catch-all for all other errors
+                        interaction.Audit_Reason__c += ' Reason: Error during Lead insert - ' + error.getMessage() + '.';
+                        System.debug('Error during Lead insert - ' + error.getMessage() + '.');
                     }
                 }
             }
+
+            leadIndex++;
         }
 
         return leadsToConvert;
@@ -397,6 +418,12 @@ public class INT_InteractionProcessor {
             if (lcr.isSuccess()) {
                 // Add Contact Id to set to be updated from its Interaction record.
                 interaction.Contact__c = lcr.getContactId();
+                contactIds.add(lcr.getContactId());
+
+                // If we had an existing Lead in SF, copy the values to the Interaction based upon the custom mdt.
+                if (existingLeadMap.containsKey(lcr.getLeadId())) {
+                    intMappingService.applyDataToInteraction(existingLeadMap.get(lcr.getLeadId()), interaction);
+                }
 
                 // Create new Opportunity for upsert if Opportunity Key is populated.
                 if (!String.isEmpty(interaction.Opportunity_Key__c)) {
@@ -456,13 +483,8 @@ public class INT_InteractionProcessor {
      * @return newAffil, the Affiliation__c record for upsert.
      */
     private hed__Affiliation__c createUpsertAffilFromInteraction(Interaction__c interaction) {
-        hed__Affiliation__c newAffil = new hed__Affiliation__c(
-            hed__Status__c = 'Current',
-            hed__Role__c = interaction.Affiliation_Role__c,
-            hed__Primary__c = interaction.Primary_Affiliation__c,
-            hed__Contact__c = interaction.Contact__c,
-            hed__Account__c = interaction.Affiliated_Account__c
-        );
+        hed__Affiliation__c newAffil = new hed__Affiliation__c();
+        
         intMappingService.applyDataToSObject(interaction, newAffil);
         newAffil.Upsert_Key__c = interaction.Contact__c + interaction.Affiliation_Key__c;
 
@@ -473,15 +495,14 @@ public class INT_InteractionProcessor {
      * @description Creates a List of CampaignMember records to upsert from the Leads that have been inserted.
      * @return campaignMembersToUpsert, the List of CampaignMember records to upsert.
      */
-    private List<CampaignMember> createCampaignMembersFromLeads() {
+    private List<CampaignMember> createCampaignMembersFromLeads(Boolean leadOnly) {
         List<CampaignMember> campaignMembersToUpsert = new List<CampaignMember>();
 
         for (String leadId : leadIdToInteractionMap.keySet()) {
             if (!String.isEmpty(leadIdToInteractionMap.get(leadId).Campaign_Member_Status__c)
                 && !String.isEmpty(leadIdToInteractionMap.get(leadId).Campaign_Key__c)
-                && !String.isEmpty(leadIdToInteractionMap.get(leadId).Lead__c)
             ) {
-                campaignMembersToUpsert.add(createUpsertCMFromInteraction(leadIdToInteractionMap.get(leadId), false));
+                campaignMembersToUpsert.add(createUpsertCMFromInteraction(leadIdToInteractionMap.get(leadId), false, leadOnly));
             }
 
             // Create a CampaignMember to Upsert for the Additional_Campaign_Key__c if it is populated.
@@ -489,7 +510,7 @@ public class INT_InteractionProcessor {
                 && !String.isEmpty(leadIdToInteractionMap.get(leadId).Additional_Campaign_Member_Status__c)
                 && !String.isEmpty(leadIdToInteractionMap.get(leadId).Lead__c)
             ) {
-                campaignMembersToUpsert.add(createUpsertCMFromInteraction(leadIdToInteractionMap.get(leadId), true));
+                campaignMembersToUpsert.add(createUpsertCMFromInteraction(leadIdToInteractionMap.get(leadId), true, leadOnly));
             }
         }
 
@@ -502,21 +523,27 @@ public class INT_InteractionProcessor {
      * @param additionalCampaign, a bool telling the method to use Campaign or Additional Campaign fields on the Interaction__c.
      * @return memberToUpsert, the CampaignMember to upsert.
      */
-    private CampaignMember createUpsertCMFromInteraction(Interaction__c interaction, Boolean additionalCampaign) {
+    private CampaignMember createUpsertCMFromInteraction(Interaction__c interaction, Boolean additionalCampaign, Boolean leadOnly) {
         CampaignMember memberToUpsert;
+        String leadOrContactId = (leadOnly) ? interaction.Lead__c : interaction.Contact__c;
         String campaignKey = (!additionalCampaign) ? interaction.Campaign_Key__c : interaction.Additional_Campaign_Key__c;
         String campaignMemberStatus = (!additionalCampaign) ? interaction.Campaign_Member_Status__c : interaction.Additional_Campaign_Member_Status__c;
-        String campaignMemberKey = String.valueOf(interaction.Lead__c + '.' + campaignKey);
+        String campaignMemberKey = String.valueOf(leadOrContactId + '.' + campaignKey);
 
         if (campaignMemberMap.containskey(campaignMemberKey)) {
             memberToUpsert = campaignMemberMap.get(campaignMemberKey);
-            memberToUpsert.Campaign_Member_Key__c = interaction.Lead__c + '.' + campaignIdMap.get(campaignKey);
+            memberToUpsert.Campaign_Member_Key__c = leadOrContactId + '.' + campaignIdMap.get(campaignKey);
         } else {
             memberToUpsert = new CampaignMember(
-                LeadId = interaction.Lead__c,
                 CampaignId = campaignIdMap.get(campaignKey),
-                Campaign_Member_Key__c = interaction.Lead__c + '.' + campaignIdMap.get(campaignKey)
+                Campaign_Member_Key__c = leadOrContactId + '.' + campaignIdMap.get(campaignKey)
             );
+
+            if (leadOnly) {
+                memberToUpsert.LeadId = interaction.Lead__c;
+            } else {
+                memberToUpsert.ContactId = interaction.Contact__c;
+            }
         }
 
         memberToUpsert.Status = campaignMemberStatus;

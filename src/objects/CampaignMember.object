@@ -3,13 +3,27 @@
     <fields>
         <fullName>Campaign_Member_Key__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>Used by the Interactions process to update an existing Campaign Member. Set to Lead.ID + * + Campaign.ID. Also updated by a workflow rule.</description>
+        <description>The Contact ID.Campaign ID if it exists, used to to upsert Campaign Members in the Interaction process.</description>
         <externalId>true</externalId>
-        <inlineHelpText>Used by the Interactions process to update an existing Campaign Member.</inlineHelpText>
+        <inlineHelpText>The Contact ID.Campaign ID if it exists, used to to upsert Campaign Members in the Interaction process.</inlineHelpText>
         <label>Campaign Member Key</label>
         <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Lead_Contact_ID__c</fullName>
+        <description>Displays the Lead or Contact ID related to the campaign member. Needed to make campaign member a sendable data extension in the Marketing Cloud.</description>
+        <externalId>false</externalId>
+        <formula>IF(
+            ISBLANK(ContactId),
+            CASESAFEID(LeadId),
+            CASESAFEID(ContactId)
+            )</formula>
+        <label>Lead/Contact ID</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
 </CustomObject>
