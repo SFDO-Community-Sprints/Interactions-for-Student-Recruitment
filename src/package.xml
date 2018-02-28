@@ -30,6 +30,7 @@
         <members>Campaign.Campaign_Key__c</members>
         <members>Campaign.Campaign_Reference_ID__c</members>
         <members>CampaignMember.Campaign_Member_Key__c</members>
+        <members>CampaignMember.Lead_Contact_ID__c</members>
         <members>Contact.Constituent_ID__c</members>
         <members>Contact.Primary_Academic_Program__c</members>
         <members>Contact.Primary_Educational_Institution__c</members>

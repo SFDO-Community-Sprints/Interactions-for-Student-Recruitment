@@ -5,11 +5,12 @@
 ******************************************/
 public class INT_InteractionMappingService {
     private Map<String, Set<String>> skipMappingMap = new Map<String, Set<String>>();
-    private Map<String, List<Interaction_Mapping__c>> intMappingMap = new Map<String, List<Interaction_Mapping__c>>();
+    public Map<String, List<Interaction_Mapping__c>> intMappingMap = new Map<String, List<Interaction_Mapping__c>>();
 
     public INT_InteractionMappingService() {
         for (Interaction_Mapping__c mapping : [
-            SELECT Skip_Mapping__c, Insert_Null__c, Target_Object_API_Name__c, Interaction_Source_Field_API_Name__c, Target_Field_API_Name__c
+            SELECT Skip_Mapping__c, Insert_Null__c, Target_Object_API_Name__c, Source_Field_API_Name__c,
+                Target_Field_API_Name__c, Source_Object_API_Name__c
             FROM Interaction_Mapping__c
             WHERE Active__c = true
         ]) {
@@ -27,10 +28,10 @@ public class INT_InteractionMappingService {
     }
 
     /**
-     * @description Checks to see if field has an excluded source 
+     * @description Checks to see if field has an excluded source
      * @param mappingId, the Interaction_Mapping__c record Id to pull the record from the Map.
      * @param interactionSource, the value of the Interaction.Interaction_Source__c field.
-     * @param skipOrPreserveSourcesMap, the Map containing the Skip Mapping 
+     * @param skipOrPreserveSourcesMap, the Map containing the Skip Mapping
      * @return a Boolean determining whether or not the field is excluded or overwrite if blank.
      */
     private Boolean isSkipOrPreserveSourceField(
@@ -57,15 +58,33 @@ public class INT_InteractionMappingService {
                 if (isSkipOrPreserveSourceField(mapping.Id, interaction.Interaction_Source__c, skipMappingMap)) {
                     continue; // Prevent mapping of field if it's a skip field or a preserve target source
                 } else if (mapping.Insert_Null__c
-                    || (interaction.get(mapping.Interaction_Source_Field_API_Name__c) != null
-                        && interaction.get(mapping.Interaction_Source_Field_API_Name__c) != '')
+                    || (interaction.get(mapping.Source_Field_API_Name__c) != null
+                        && interaction.get(mapping.Source_Field_API_Name__c) != '')
                 ) {
-                    theObject.put(mapping.Target_Field_API_Name__c, interaction.get(mapping.Interaction_Source_Field_API_Name__c));
+                    theObject.put(mapping.Target_Field_API_Name__c, interaction.get(mapping.Source_Field_API_Name__c));
                 }
 
             }
         }
 
         return theObject;
+    }
+
+    /**
+     * @description Applies data from a source Object to the Interaction__c based upon Interaction_Mapping__c records.
+     * @param theObject, the SObject to pull data from.
+     * @param interaction, the Interaction__c record to populate.
+     * @return interaction, the populated Interaction__c record.
+     */
+    public Interaction__c applyDataToInteraction(SObject theObject, Interaction__c interaction) {
+        if (intMappingMap.containsKey('Interaction__c')) {
+            for (Interaction_Mapping__c mapping : intMappingMap.get('Interaction__c')) {
+                if (mapping.Source_Object_API_Name__c == theObject.getSObjectType().getDescribe().getName()) {
+                    interaction.put(mapping.Target_Field_API_Name__c, theObject.get(mapping.Source_Field_API_Name__c));
+                }
+            }
+        }
+
+        return interaction;
     }
 }

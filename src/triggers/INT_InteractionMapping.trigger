@@ -4,7 +4,6 @@
 * Description: Interaction_Mapping__c Trigger
 ******************************************/
 trigger INT_InteractionMapping on Interaction_Mapping__c (after insert, after update) {
-// Custom Validation for Interactin_Mapping__c
     Set<String> sObjectNames = new Set<String>{'Interaction__c'};
     Map<String, Set<String>> sObjectFieldStringsMap = new Map<String, Set<String>>();
 
@@ -44,10 +43,10 @@ trigger INT_InteractionMapping on Interaction_Mapping__c (after insert, after up
         }
 
         // Validate source field API name from the Interaction
-        if (sObjectFieldStringsMap.containsKey('Interaction__c')) {
-            if (!sObjectFieldStringsMap.get('Interaction__c').contains(mapping.Interaction_Source_Field_API_Name__c)) {
+        if (sObjectFieldStringsMap.containsKey(mapping.Source_Object_API_Name__c)) {
+            if (!sObjectFieldStringsMap.get(mapping.Source_Object_API_Name__c).contains(mapping.Source_Field_API_Name__c)) {
                 if (!String.isEmpty(errorString)) errorString += ' ';
-                errorString += 'Recruitment Import Field \'' + mapping.Interaction_Source_Field_API_Name__c + '\' does not exist ' +
+                errorString += 'Recruitment Import Field \'' + mapping.Source_Field_API_Name__c + '\' does not exist ' +
                     'on Interaction. Please choose a valid field to map from and ensure it is in API name format.';
             }
         }
