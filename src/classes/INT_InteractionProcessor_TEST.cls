@@ -205,7 +205,7 @@ private class INT_InteractionProcessor_TEST {
             Active__c = true
         );
 
-        if (planRTInfo != null && planRTInfo.get('Academic Plan').getRecordTypeId() != null) {
+        if (planRTInfo != null && planRTInfo.containsKey('Academic Plan')) {
             acadPlan.put('RecordTypeId', planRTInfo.get('Academic Plan').getRecordTypeId());
         }
 
