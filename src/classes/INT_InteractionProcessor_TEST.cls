@@ -183,6 +183,7 @@ private class INT_InteractionProcessor_TEST {
     static void testOpportunityCreation() {
         // Arrange
         Map<String, Schema.RecordTypeInfo> accRTInfo = Account.SObjectType.getDescribe().getRecordTypeInfosByName();
+        Map<String, Schema.RecordTypeInfo> planRTInfo = Plan__c.SObjectType.getDescribe().getRecordTypeInfosByName();
 
         Account testCollege = new Account(
             Name = 'College of Arts & Sciences',
@@ -196,15 +197,6 @@ private class INT_InteractionProcessor_TEST {
         );
         insert testUniversity;
 
-        Plan__c recruitPlan = new Plan__c(
-            Name = 'BA - English',
-            Type__c = 'Recruitment',
-            Department__c = testCollege.Id,
-            Career__c = 'Undergraduate',
-            Active__c = true
-        );
-        insert recruitPlan;
-
         Plan__c acadPlan = new Plan__c(
             Name = 'Business Administration BA',
             Type__c = 'Academic',
@@ -212,6 +204,11 @@ private class INT_InteractionProcessor_TEST {
             Career__c = 'Undergraduate',
             Active__c = true
         );
+
+        if (planRTInfo != null && planRTInfo.get('Academic Plan').getRecordTypeId() != null) {
+            acadPlan.RecordTypeId = planRTInfo.get('Academic Plan').getRecordTypeId();
+        }
+
         insert acadPlan;
 
         hed__Term__c testFallTerm = new hed__Term__c(
@@ -266,7 +263,6 @@ private class INT_InteractionProcessor_TEST {
             FROM Contact
             WHERE Id = :assertInteraction.Contact__c
         ];
-        System.assertEquals(assertInteraction.Contact_Title__c, assertContact.Title, 'Title should have been copied over to Contact.');
         System.assertEquals(assertInteraction.Birthdate__c, assertContact.Birthdate, 'Birthdate should have been copied over to Contact.');
         System.assert(assertContact.hed__Affl_Accounts__r.size() == 1, 'Affiliation should have been created.');
         System.assertEquals(assertContact.hed__Affl_Accounts__r[0].hed__Account__c, testUniversity.Id, 'Affiliation Account should have been mapped to the testUniversity.');
