@@ -97,7 +97,6 @@
         <members>Interaction_Mapping__c.All</members>
         <members>Interaction_Mapping__c.CampaignMember</members>
         <members>Interaction_Mapping__c.Contact</members>
-        <members>Interaction_Mapping__c.Lead</members>
         <members>Interaction_Mapping__c.Opportunity</members>
         <members>Plan__c.Academic_Interests</members>
         <members>Plan__c.All</members>
