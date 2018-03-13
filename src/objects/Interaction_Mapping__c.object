@@ -74,18 +74,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Interaction_Source_Field_API_Name__c</fullName>
-        <description>The source field on the Interaction object you would like to map to a Target Object field. The value in this field must be in API format and matches an existing field on Interaction.</description>
-        <externalId>false</externalId>
-        <inlineHelpText>The source field on the Interaction object you would like to map. Ensure this is in API format and matches the existing field on Interaction.</inlineHelpText>
-        <label>Interaction Source Field API Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Skip_Mapping__c</fullName>
         <description>Select the Interaction Sources that should ignore this mapping configuration. The values in this picklist should match the values in Interaction&apos;s &quot;Interaction Sources&quot; field.</description>
         <externalId>false</externalId>
@@ -123,6 +111,44 @@
         <visibleLines>8</visibleLines>
     </fields>
     <fields>
+        <fullName>Source_Field_API_Name__c</fullName>
+        <description>The Source Object field you would like to map to a Target Object field. The value in this field must be in API format and matches an existing field on the Source Object.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Source Object field you would like to map to a Target Object field. Ensure this is in API format and matches the existing field on the Source Object.</inlineHelpText>
+        <label>Source Field API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_Object_API_Name__c</fullName>
+        <description>The API name of the Source Object to map to the Target Object. When adding new values, ensure that you use the API name of the object.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Select the Source Object to map to the Target Object.</inlineHelpText>
+        <label>Source Object API Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Lead</fullName>
+                    <default>false</default>
+                    <label>Lead</label>
+                </value>
+                <value>
+                    <fullName>Interaction__c</fullName>
+                    <default>true</default>
+                    <label>Interaction__c</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Target_Field_API_Name__c</fullName>
         <description>The field on the Target Object you would like to map an Interaction field value to. The value in this field must be in API format and match an existing field on the Target Object.</description>
         <externalId>false</externalId>
@@ -138,7 +164,7 @@
         <fullName>Target_Object_API_Name__c</fullName>
         <description>The API name of the Target Object to map Interaction data to. When adding new values, ensure that you use the API name of the object.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Select the Target Object to map Interaction data to.</inlineHelpText>
+        <inlineHelpText>Select the Target Object to map Source Object data to.</inlineHelpText>
         <label>Target Object API Name</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -171,6 +197,11 @@
                     <default>false</default>
                     <label>Opportunity</label>
                 </value>
+                <value>
+                    <fullName>Interaction__c</fullName>
+                    <default>false</default>
+                    <label>Interaction__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -181,7 +212,7 @@
         <columns>Active__c</columns>
         <columns>Target_Object_API_Name__c</columns>
         <columns>Target_Field_API_Name__c</columns>
-        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Source_Field_API_Name__c</columns>
         <columns>Insert_Null__c</columns>
         <columns>Skip_Mapping__c</columns>
         <filterScope>Everything</filterScope>
@@ -196,7 +227,8 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Active__c</columns>
-        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Source_Object_API_Name__c</columns>
+        <columns>Source_Field_API_Name__c</columns>
         <columns>Target_Object_API_Name__c</columns>
         <columns>Target_Field_API_Name__c</columns>
         <columns>Insert_Null__c</columns>
@@ -210,7 +242,7 @@
         <columns>Active__c</columns>
         <columns>Target_Object_API_Name__c</columns>
         <columns>Target_Field_API_Name__c</columns>
-        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Source_Field_API_Name__c</columns>
         <columns>Insert_Null__c</columns>
         <columns>Skip_Mapping__c</columns>
         <filterScope>Everything</filterScope>
@@ -227,7 +259,7 @@
         <columns>Active__c</columns>
         <columns>Target_Object_API_Name__c</columns>
         <columns>Target_Field_API_Name__c</columns>
-        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Source_Field_API_Name__c</columns>
         <columns>Insert_Null__c</columns>
         <columns>Skip_Mapping__c</columns>
         <filterScope>Everything</filterScope>
@@ -239,12 +271,12 @@
         <label>Contact</label>
     </listViews>
     <listViews>
-        <fullName>Lead</fullName>
+        <fullName>Interaction_to_Lead</fullName>
         <columns>NAME</columns>
         <columns>Active__c</columns>
         <columns>Target_Object_API_Name__c</columns>
         <columns>Target_Field_API_Name__c</columns>
-        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Source_Field_API_Name__c</columns>
         <columns>Insert_Null__c</columns>
         <columns>Skip_Mapping__c</columns>
         <filterScope>Everything</filterScope>
@@ -253,7 +285,29 @@
             <operation>equals</operation>
             <value>Lead</value>
         </filters>
-        <label>Lead</label>
+        <label>Interaction to Lead</label>
+    </listViews>
+    <listViews>
+        <fullName>Lead_to_Interaction</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Target_Object_API_Name__c</columns>
+        <columns>Target_Field_API_Name__c</columns>
+        <columns>Source_Field_API_Name__c</columns>
+        <columns>Insert_Null__c</columns>
+        <columns>Skip_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Target_Object_API_Name__c</field>
+            <operation>equals</operation>
+            <value>Interaction__c</value>
+        </filters>
+        <filters>
+            <field>Source_Object_API_Name__c</field>
+            <operation>equals</operation>
+            <value>Lead</value>
+        </filters>
+        <label>Lead to Interaction</label>
     </listViews>
     <listViews>
         <fullName>Opportunity</fullName>
@@ -261,7 +315,7 @@
         <columns>Active__c</columns>
         <columns>Target_Object_API_Name__c</columns>
         <columns>Target_Field_API_Name__c</columns>
-        <columns>Interaction_Source_Field_API_Name__c</columns>
+        <columns>Source_Field_API_Name__c</columns>
         <columns>Insert_Null__c</columns>
         <columns>Skip_Mapping__c</columns>
         <filterScope>Everything</filterScope>
@@ -271,6 +325,23 @@
             <value>Opportunity</value>
         </filters>
         <label>Opportunity</label>
+    </listViews>
+    <listViews>
+        <fullName>School</fullName>
+        <columns>NAME</columns>
+        <columns>Active__c</columns>
+        <columns>Target_Object_API_Name__c</columns>
+        <columns>Target_Field_API_Name__c</columns>
+        <columns>Source_Field_API_Name__c</columns>
+        <columns>Insert_Null__c</columns>
+        <columns>Skip_Mapping__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Source_Field_API_Name__c</field>
+            <operation>contains</operation>
+            <value>School</value>
+        </filters>
+        <label>School</label>
     </listViews>
     <nameField>
         <displayFormat>INTMap-{000000}</displayFormat>
@@ -282,11 +353,11 @@
         <customTabListAdditionalFields>Active__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Target_Object_API_Name__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Target_Field_API_Name__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Interaction_Source_Field_API_Name__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Source_Field_API_Name__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Insert_Null__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Skip_Mapping__c</customTabListAdditionalFields>
-        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>Accept</excludedStandardButtons>
+        <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <lookupDialogsAdditionalFields>Active__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Target_Object_API_Name__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Target_Field_API_Name__c</lookupDialogsAdditionalFields>
@@ -299,10 +370,26 @@
         <searchResultsAdditionalFields>Active__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Target_Object_API_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Target_Field_API_Name__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Interaction_Source_Field_API_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Source_Field_API_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Insert_Null__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Skip_Mapping__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Disallow_Interaction_as_Target_wo_Lead</fullName>
+        <active>true</active>
+        <description>Interaction can only be the Target Object if Lead is the Source Object.</description>
+        <errorConditionFormula>ISPICKVAL(Target_Object_API_Name__c, &quot;Interaction__c&quot;) &amp;&amp; NOT(ISPICKVAL(Source_Object_API_Name__c, &quot;Lead&quot;))</errorConditionFormula>
+        <errorDisplayField>Target_Object_API_Name__c</errorDisplayField>
+        <errorMessage>Invalid Objects: Interaction cannot be the Target Object unless Lead is the Source Object.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Disallow_Lead_as_Source_wo_Interaction</fullName>
+        <active>true</active>
+        <description>Lead can only be the Source Object if Interaction is the Target Object.</description>
+        <errorConditionFormula>ISPICKVAL(Source_Object_API_Name__c, &quot;Lead&quot;) &amp;&amp; NOT(ISPICKVAL(Target_Object_API_Name__c, &quot;Interaction__c&quot;))</errorConditionFormula>
+        <errorDisplayField>Source_Object_API_Name__c</errorDisplayField>
+        <errorMessage>Invalid Objects: Lead cannot be the Source Object unless Interaction is the Target Object.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

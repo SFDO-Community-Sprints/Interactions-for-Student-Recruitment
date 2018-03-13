@@ -14,7 +14,7 @@ public class INT_TestDataFactory {
         /* CampaignMember Mappings */
         Interaction_Mapping__c campaignMemberStatusMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'CampaignMember',
-            Interaction_Source_Field_API_Name__c = 'Campaign_Member_Status__c',
+            Source_Field_API_Name__c = 'Campaign_Member_Status__c',
             Target_Field_API_Name__c = 'Status',
             Active__c = true
         );
@@ -23,7 +23,7 @@ public class INT_TestDataFactory {
         /* Contact Mappings */
         Interaction_Mapping__c contactBirthdateMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Birthdate__c',
+            Source_Field_API_Name__c = 'Birthdate__c',
             Target_Field_API_Name__c = 'Birthdate',
             Active__c = true
         );
@@ -31,23 +31,16 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactConstituentMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Constituent_ID__c',
+            Source_Field_API_Name__c = 'Constituent_ID__c',
             Target_Field_API_Name__c = 'Constituent_ID__c',
             Active__c = true
         );
         testMappingsToInsert.add(contactConstituentMapping);
 
-        Interaction_Mapping__c contactTitleMapping = new Interaction_Mapping__c(
-            Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Contact_Title__c',
-            Target_Field_API_Name__c = 'Title',
-            Active__c = true
-        );
-        testMappingsToInsert.add(contactTitleMapping);
 
         Interaction_Mapping__c contactEmailMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Email__c',
+            Source_Field_API_Name__c = 'Email__c',
             Target_Field_API_Name__c = 'Email',
             Active__c = true
         );
@@ -55,7 +48,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactFirstNameMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'First_Name__c',
+            Source_Field_API_Name__c = 'First_Name__c',
             Target_Field_API_Name__c = 'FirstName',
 			Skip_Mapping__c = 'Webform',
             Active__c = true
@@ -64,7 +57,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactGenderMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Gender__c',
+            Source_Field_API_Name__c = 'Gender__c',
             Target_Field_API_Name__c = 'hed__Gender__c',
             Skip_Mapping__c = 'Webform;Manual Entry',
             Active__c = true
@@ -73,7 +66,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactHomePhoneMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Home_Phone__c',
+            Source_Field_API_Name__c = 'Home_Phone__c',
             Target_Field_API_Name__c = 'HomePhone',
             Active__c = true
         );
@@ -81,7 +74,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactLastNameMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Last_Name__c',
+            Source_Field_API_Name__c = 'Last_Name__c',
             Target_Field_API_Name__c = 'LastName',
 			Skip_Mapping__c = 'Webform',
             Active__c = true
@@ -90,7 +83,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactLeadSourceMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Lead_Source__c',
+            Source_Field_API_Name__c = 'Lead_Source__c',
             Target_Field_API_Name__c = 'LeadSource',
             Active__c = true
         );
@@ -98,7 +91,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactMailingCityMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Mailing_City__c',
+            Source_Field_API_Name__c = 'Mailing_City__c',
             Target_Field_API_Name__c = 'MailingCity',
             Active__c = true
         );
@@ -106,7 +99,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactMailingCountryMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Mailing_Country__c',
+            Source_Field_API_Name__c = 'Mailing_Country__c',
             Target_Field_API_Name__c = 'MailingCountry',
             Active__c = true
         );
@@ -114,7 +107,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactMailingPostalCodeMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Mailing_Postal_Code__c',
+            Source_Field_API_Name__c = 'Mailing_Postal_Code__c',
             Target_Field_API_Name__c = 'MailingPostalCode',
             Active__c = true
         );
@@ -122,7 +115,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactMailingStateMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Mailing_State__c',
+            Source_Field_API_Name__c = 'Mailing_State__c',
             Target_Field_API_Name__c = 'MailingState',
             Active__c = true
         );
@@ -130,7 +123,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactMailingStreetMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Mailing_Street__c',
+            Source_Field_API_Name__c = 'Mailing_Street__c',
             Target_Field_API_Name__c = 'MailingStreet',
             Active__c = true
         );
@@ -138,7 +131,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactMobilePhoneMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Mobile_Phone__c',
+            Source_Field_API_Name__c = 'Mobile_Phone__c',
             Target_Field_API_Name__c = 'MobilePhone',
             Active__c = true
         );
@@ -146,7 +139,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c contactSalutationMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Contact',
-            Interaction_Source_Field_API_Name__c = 'Salutation__c',
+            Source_Field_API_Name__c = 'Salutation__c',
             Target_Field_API_Name__c = 'Salutation',
             Active__c = true
         );
@@ -155,7 +148,7 @@ public class INT_TestDataFactory {
         /* hed__Affiliation__c Mappings */
         Interaction_Mapping__c affiliationAccountMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'hed__Affiliation__c',
-            Interaction_Source_Field_API_Name__c = 'Affiliated_Account__c',
+            Source_Field_API_Name__c = 'Affiliated_Account__c',
             Target_Field_API_Name__c = 'hed__Account__c',
             Active__c = true
         );
@@ -163,7 +156,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c affiliationKeyMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'hed__Affiliation__c',
-            Interaction_Source_Field_API_Name__c = 'Affiliation_Key__c',
+            Source_Field_API_Name__c = 'Affiliation_Key__c',
             Target_Field_API_Name__c = 'Upsert_Key__c',
             Active__c = true
         );
@@ -171,7 +164,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c affiliationRoleMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'hed__Affiliation__c',
-            Interaction_Source_Field_API_Name__c = 'Affiliation_Role__c',
+            Source_Field_API_Name__c = 'Affiliation_Role__c',
             Target_Field_API_Name__c = 'hed__Role__c',
             Active__c = true
         );
@@ -179,7 +172,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c affiliationContactMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'hed__Affiliation__c',
-            Interaction_Source_Field_API_Name__c = 'Contact__c',
+            Source_Field_API_Name__c = 'Contact__c',
             Target_Field_API_Name__c = 'hed__Contact__c',
             Active__c = true
         );
@@ -187,32 +180,16 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c affiliationPrimaryMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'hed__Affiliation__c',
-            Interaction_Source_Field_API_Name__c = 'Primary_Affiliation__c',
+            Source_Field_API_Name__c = 'Primary_Affiliation__c',
             Target_Field_API_Name__c = 'hed__Primary__c',
             Active__c = true
         );
         testMappingsToInsert.add(affiliationPrimaryMapping);
 
         /* Lead Mappings */
-        Interaction_Mapping__c leadConstituentMapping = new Interaction_Mapping__c(
-            Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Constituent_ID__c',
-            Target_Field_API_Name__c = 'Constituent_ID__c',
-            Active__c = true
-        );
-        testMappingsToInsert.add(leadConstituentMapping);
-
-        Interaction_Mapping__c leadTitleMapping = new Interaction_Mapping__c(
-            Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Contact_Title__c',
-            Target_Field_API_Name__c = 'Title',
-            Active__c = true
-        );
-        testMappingsToInsert.add(leadTitleMapping);
-
         Interaction_Mapping__c leadEmailMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Email__c',
+            Source_Field_API_Name__c = 'Email__c',
             Target_Field_API_Name__c = 'Email',
             Active__c = true
         );
@@ -220,7 +197,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadFirstNameMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'First_Name__c',
+            Source_Field_API_Name__c = 'First_Name__c',
             Target_Field_API_Name__c = 'FirstName',
             Active__c = true
         );
@@ -228,7 +205,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadPhoneMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Home_Phone__c',
+            Source_Field_API_Name__c = 'Home_Phone__c',
             Target_Field_API_Name__c = 'Phone',
             Active__c = true
         );
@@ -236,7 +213,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadLastNameMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Last_Name__c',
+            Source_Field_API_Name__c = 'Last_Name__c',
             Target_Field_API_Name__c = 'LastName',
             Active__c = true
         );
@@ -244,7 +221,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadLeadSourceMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Lead_Source__c',
+            Source_Field_API_Name__c = 'Lead_Source__c',
             Target_Field_API_Name__c = 'LeadSource',
             Active__c = true
         );
@@ -252,7 +229,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadCityMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Mailing_City__c',
+            Source_Field_API_Name__c = 'Mailing_City__c',
             Target_Field_API_Name__c = 'City',
             Active__c = true
         );
@@ -260,7 +237,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadCountryMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Mailing_Country__c',
+            Source_Field_API_Name__c = 'Mailing_Country__c',
             Target_Field_API_Name__c = 'Country',
             Active__c = true
         );
@@ -268,7 +245,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadPostalCodeMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Mailing_Postal_Code__c',
+            Source_Field_API_Name__c = 'Mailing_Postal_Code__c',
             Target_Field_API_Name__c = 'PostalCode',
             Active__c = true
         );
@@ -276,7 +253,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadStateMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Mailing_State__c',
+            Source_Field_API_Name__c = 'Mailing_State__c',
             Target_Field_API_Name__c = 'State',
             Active__c = true
         );
@@ -284,7 +261,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadStreetMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Mailing_Street__c',
+            Source_Field_API_Name__c = 'Mailing_Street__c',
             Target_Field_API_Name__c = 'Street',
             Active__c = true
         );
@@ -292,7 +269,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadMobilePhoneMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Mobile_Phone__c',
+            Source_Field_API_Name__c = 'Mobile_Phone__c',
             Target_Field_API_Name__c = 'MobilePhone',
             Active__c = true
         );
@@ -300,7 +277,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c leadSalutationMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Lead',
-            Interaction_Source_Field_API_Name__c = 'Salutation__c',
+            Source_Field_API_Name__c = 'Salutation__c',
             Target_Field_API_Name__c = 'Salutation',
             Active__c = true
         );
@@ -309,7 +286,7 @@ public class INT_TestDataFactory {
         /* Opportunity Mappings */
         Interaction_Mapping__c opportunityAdmitTypeMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Opportunity',
-            Interaction_Source_Field_API_Name__c = 'Admit_Type__c',
+            Source_Field_API_Name__c = 'Admit_Type__c',
             Target_Field_API_Name__c = 'Admit_Type__c',
             Active__c = true
         );
@@ -317,7 +294,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c opportunityContactMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Opportunity',
-            Interaction_Source_Field_API_Name__c = 'Contact__c',
+            Source_Field_API_Name__c = 'Contact__c',
             Target_Field_API_Name__c = 'Contact__c',
             Active__c = true
         );
@@ -325,7 +302,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c opportunityLeadSourceMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Opportunity',
-            Interaction_Source_Field_API_Name__c = 'Lead_Source__c',
+            Source_Field_API_Name__c = 'Lead_Source__c',
             Target_Field_API_Name__c = 'LeadSource',
             Active__c = true
         );
@@ -333,7 +310,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c opportunityNameMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Opportunity',
-            Interaction_Source_Field_API_Name__c = 'Opportunity_Name__c',
+            Source_Field_API_Name__c = 'Opportunity_Name__c',
             Target_Field_API_Name__c = 'Name',
             Active__c = true
         );
@@ -341,7 +318,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c opportunityStageMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Opportunity',
-            Interaction_Source_Field_API_Name__c = 'Opportunity_Stage__c',
+            Source_Field_API_Name__c = 'Opportunity_Stage__c',
             Target_Field_API_Name__c = 'StageName',
             Active__c = true
         );
@@ -349,7 +326,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c opportunityTermMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Opportunity',
-            Interaction_Source_Field_API_Name__c = 'Term__c',
+            Source_Field_API_Name__c = 'Term__c',
             Target_Field_API_Name__c = 'Term__c',
             Active__c = true
         );
@@ -357,7 +334,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c opportunityAcadPlanMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Opportunity',
-            Interaction_Source_Field_API_Name__c = 'Academic_Interest__c',
+            Source_Field_API_Name__c = 'Academic_Interest__c',
             Target_Field_API_Name__c = 'Academic_Interest__c',
             Active__c = true
         );
@@ -365,7 +342,7 @@ public class INT_TestDataFactory {
 
         Interaction_Mapping__c opportunityRecruitPlanMapping = new Interaction_Mapping__c(
             Target_Object_API_Name__c = 'Opportunity',
-            Interaction_Source_Field_API_Name__c = 'Recruitment_Interest__c',
+            Source_Field_API_Name__c = 'Recruitment_Interest__c',
             Target_Field_API_Name__c = 'Recruitment_Interest__c',
             Active__c = true
         );
