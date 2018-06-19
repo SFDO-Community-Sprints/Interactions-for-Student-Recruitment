@@ -43,11 +43,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Interaction_Mapping__c.Interaction_Source_Field_API_Name__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Interaction_Mapping__c.Skip_Mapping__c</field>
         <readable>false</readable>
     </fieldPermissions>
