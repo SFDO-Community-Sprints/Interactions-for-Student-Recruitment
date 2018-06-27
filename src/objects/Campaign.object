@@ -13,7 +13,7 @@
     <fields>
         <fullName>Campaign_Reference_ID__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>An external ID for websites or integrations to access this Campaign. If left blank when the Campaign is created, a workflow rule automatically sets it to the 18-digit Salesforce ID.</description>
+        <description>INTERACTIONS: An external ID for websites or integrations to access this Campaign. If left blank when the Campaign is created, a workflow rule automatically sets it to the 18-digit Salesforce ID.</description>
         <externalId>true</externalId>
         <inlineHelpText>Set this to a custom external ID value for websites or integrations to match on. If left blank, it will be set to the 18-digit Salesforce ID.</inlineHelpText>
         <label>Campaign Reference ID</label>

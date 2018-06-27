@@ -57,7 +57,7 @@
         <label>Recruitment Interest</label>
     </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>An object for housing recruitment and academic interest records.</description>
+    <description>INTERACTIONS: An object for housing recruitment and academic interest records.</description>
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableChangeDataCapture>false</enableChangeDataCapture>
@@ -88,7 +88,7 @@
     </fields>
     <fields>
         <fullName>Career__c</fullName>
-        <description>The Career that the record belongs to (Ex: Undergraduate).</description>
+        <description>INTERACTIONS: The Career that the record belongs to (Ex: Undergraduate).</description>
         <externalId>false</externalId>
         <inlineHelpText>Select a Career for the record.</inlineHelpText>
         <label>Career</label>
@@ -114,7 +114,7 @@
     </fields>
     <fields>
         <fullName>Degree__c</fullName>
-        <description>The Degree of the record (Ex: BS, BA, etc.).</description>
+        <description>INTERACTIONS: The Degree of the record (Ex: BS, BA, etc.).</description>
         <externalId>false</externalId>
         <inlineHelpText>Select a Degree for the record.</inlineHelpText>
         <label>Degree</label>
@@ -156,7 +156,7 @@
     <fields>
         <fullName>Department__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>A lookup to Account to connect the record to the Account hierarchy for departments, schools, and/or colleges. Filter criteria of Record Type = University Department.</description>
+        <description>INTERACTIONS: A lookup to Account to connect the record to the Account hierarchy for departments, schools, and/or colleges. Filter criteria of Record Type = University Department.</description>
         <externalId>false</externalId>
         <inlineHelpText>Enter the departmental account (i.e. School of Business) this record belongs to.</inlineHelpText>
         <label>Department</label>
@@ -179,7 +179,7 @@
     <fields>
         <fullName>Plan_Code__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>An external ID that represents this recruitment or academic interest for use in integrations.</description>
+        <description>INTERACTIONS: An external ID that represents this recruitment or academic interest for use in integrations.</description>
         <externalId>true</externalId>
         <label>Plan Code</label>
         <length>15</length>
@@ -190,7 +190,7 @@
     </fields>
     <fields>
         <fullName>Plan_Type__c</fullName>
-        <description>The type of Plan such as a Major, Minor, etc.</description>
+        <description>INTERACTIONS: The type of Plan such as a Major, Minor, etc.</description>
         <externalId>false</externalId>
         <inlineHelpText>Select a Plan Type for the Plan.</inlineHelpText>
         <label>Plan Type</label>
@@ -222,7 +222,7 @@
     <fields>
         <fullName>Recruitment_Interest__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>An internal lookup filtered by Record Type = Recruitment to connect Academic Interest records to a Recruitment Interest record. This field only appears in the Academic Interest page layout.</description>
+        <description>INTERACTIONS: An internal lookup filtered by Record Type = Recruitment to connect Academic Interest records to a Recruitment Interest record. This field only appears in the Academic Interest page layout.</description>
         <externalId>false</externalId>
         <inlineHelpText>Enter the Recruitment Interest related to the Academic Interest.</inlineHelpText>
         <label>Recruitment Interest</label>
@@ -244,7 +244,7 @@
     </fields>
     <fields>
         <fullName>Type__c</fullName>
-        <description>Tracks whether it is a recruitment or academic record for use in lookup filters on Lead, Opportunity, Interaction, and Plan. If record types are created, the lookup filters could be updated and this field would no longer be needed.</description>
+        <description>INTERACTIONS: Tracks whether it is a recruitment or academic record for use in lookup filters on Lead, Opportunity, Interaction, and Plan. If record types are created, the lookup filters could be updated and this field would no longer be needed.</description>
         <externalId>false</externalId>
         <inlineHelpText>Track whether it is a recruitment or academic record for use in lookup filters on Lead, Opportunity, Interaction, and Plan.</inlineHelpText>
         <label>Type</label>

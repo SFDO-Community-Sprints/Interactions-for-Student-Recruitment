@@ -52,7 +52,7 @@
         <label>Recruitment Interaction</label>
     </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Interaction Log and Staging Object</description>
+    <description>INTERACTIONS: Interaction Log and Staging Object</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableChangeDataCapture>false</enableChangeDataCapture>
@@ -65,7 +65,7 @@
     <fields>
         <fullName>Academic_Interest__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The official interest the individual applies for. A lookup to Plan with a filter criteria of Record Type = Academic.</description>
+        <description>INTERACTIONS: The official interest the individual applies for. A lookup to Plan with a filter criteria of Record Type = Academic.</description>
         <externalId>false</externalId>
         <inlineHelpText>The official interest the individual applies for.</inlineHelpText>
         <label>Academic Interest</label>
@@ -88,7 +88,7 @@
     </fields>
     <fields>
         <fullName>Additional_Campaign_Key__c</fullName>
-        <description>Specifies the Additional Campaign that should be connected to the additional Campaign Member created by this Interaction. If available, it uses the Interaction &quot;Campaign Reference ID&quot; field, otherwise it uses the &quot;Campaign Reference ID&quot; from the associated Additional Campaign.</description>
+        <description>INTERACTIONS: Specifies the Additional Campaign that should be connected to the additional Campaign Member created by this Interaction. If available, it uses the Interaction &quot;Campaign Reference ID&quot; field, otherwise it uses the &quot;Campaign Reference ID&quot; from the associated Additional Campaign.</description>
         <externalId>false</externalId>
         <formula>IF(ISBLANK(Additional_Campaign_Reference_ID__c),CASESAFEID(Additional_Campaign__c),Additional_Campaign_Reference_ID__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -101,7 +101,7 @@
     </fields>
     <fields>
         <fullName>Additional_Campaign_Member_Status__c</fullName>
-        <description>The status that should be set on the Campaign Member created for the Additional Campaign. It must match an available status from the Additional Campaign, and it cannot be blank.</description>
+        <description>INTERACTIONS: The status that should be set on the Campaign Member created for the Additional Campaign. It must match an available status from the Additional Campaign, and it cannot be blank.</description>
         <externalId>false</externalId>
         <inlineHelpText>Set the status for the Campaign Member created from the Additional Campaign.</inlineHelpText>
         <label>Additional Campaign Member Status</label>
@@ -152,7 +152,7 @@
     </fields>
     <fields>
         <fullName>Additional_Campaign_Reference_ID__c</fullName>
-        <description>An external ID to match to the Additional Campaign. It must either match an existing campaign&apos;s Campaign Reference ID, or a campaign&apos;s Salesforce ID. If filled out, it populates the Interaction &quot;Additional Campaign Key&quot; formula field.</description>
+        <description>INTERACTIONS: An external ID to match to the Additional Campaign. It must either match an existing campaign&apos;s Campaign Reference ID, or a campaign&apos;s Salesforce ID. If filled out, it populates the Interaction &quot;Additional Campaign Key&quot; formula field.</description>
         <externalId>false</externalId>
         <label>Additional Campaign Reference ID</label>
         <length>30</length>
@@ -165,7 +165,7 @@
     <fields>
         <fullName>Additional_Campaign__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The secondary campaign (event, marketing effort, etc.) connected to this Interaction. When the Additional Campaign Member Status field is also set, a Campaign Member will be created for the individual.</description>
+        <description>INTERACTIONS: The secondary campaign (event, marketing effort, etc.) connected to this Interaction. When the Additional Campaign Member Status field is also set, a Campaign Member will be created for the individual.</description>
         <externalId>false</externalId>
         <inlineHelpText>Set the secondary campaign (event, marketing effort, etc.) connected to this Interaction to create another Campaign Member.</inlineHelpText>
         <label>Additional Campaign</label>
@@ -179,7 +179,7 @@
     </fields>
     <fields>
         <fullName>Admit_Type__c</fullName>
-        <description>The category the potential applicant falls into for recruitment segmentation (Ex: New student, Transfer student, etc.)</description>
+        <description>INTERACTIONS: The category the potential applicant falls into for recruitment segmentation (Ex: New student, Transfer student, etc.)</description>
         <externalId>false</externalId>
         <inlineHelpText>Select the type of student for recruitment segmentation.</inlineHelpText>
         <label>Admit Type</label>
@@ -206,7 +206,7 @@
     <fields>
         <fullName>Affiliated_Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The organizational account (Ex: business, high school, college, etc.) a student is affiliated with. This field along with the Affiliation Role, Affiliation Status, and Primary Affiliation fields creates an Affiliation to the Contact. Filtered to exclude the Administrative Account Record Type.</description>
+        <description>INTERACTIONS: The organizational account (Ex: business, high school, college, etc.) a student is affiliated with. This field along with the Affiliation Role, Affiliation Status, and Primary Affiliation fields creates an Affiliation to the Contact. Filtered to exclude the Administrative Account Record Type.</description>
         <externalId>false</externalId>
         <inlineHelpText>Select the organizational account (Ex: business, high school, college, etc.) the individual is affiliated with.</inlineHelpText>
         <label>Affiliated Account</label>
@@ -229,7 +229,7 @@
     </fields>
     <fields>
         <fullName>Affiliation_Key__c</fullName>
-        <description>If there is an Affiliated Account specified, this formula returns the value: &quot;.Affiliation_Account__r.Id&quot; and the Interaction Processor prepends Contact.Id to match on the Upsert Key field on Affiliation.</description>
+        <description>INTERACTIONS: If there is an Affiliated Account specified, this formula returns the value: &quot;.Affiliation_Account__r.Id&quot; and the Interaction Processor prepends Contact.Id to match on the Upsert Key field on Affiliation.</description>
         <externalId>false</externalId>
         <formula>IF(ISBLANK(Affiliated_Account__c), &quot;&quot;,
 &quot;.&quot;+CASESAFEID(Affiliated_Account__r.Id))</formula>
@@ -243,7 +243,7 @@
     </fields>
     <fields>
         <fullName>Affiliation_Role__c</fullName>
-        <description>The Contact&apos;s position for the Affiliated Account. If this field is left blank, the default Role for the Account Record Type will be used, if one is indicated in HEDA Settings, otherwise the Role will be blank.</description>
+        <description>INTERACTIONS: The Contact&apos;s position for the Affiliated Account. If this field is left blank, the default Role for the Account Record Type will be used, if one is indicated in HEDA Settings, otherwise the Role will be blank.</description>
         <externalId>false</externalId>
         <inlineHelpText>The Contact&apos;s relationship to the Affiliated Account.</inlineHelpText>
         <label>Affiliation Role</label>
@@ -269,7 +269,7 @@
     </fields>
     <fields>
         <fullName>Affiliation_Status__c</fullName>
-        <description>The status of the Contact&apos;s affiliation to the Affiliated Account. Defaulted to &quot;Current.&quot;</description>
+        <description>INTERACTIONS: The status of the Contact&apos;s affiliation to the Affiliated Account. Defaulted to &quot;Current.&quot;</description>
         <externalId>false</externalId>
         <inlineHelpText>The status of the Contact&apos;s affiliation to the Affiliated Account.</inlineHelpText>
         <label>Affiliation Status</label>
@@ -296,7 +296,7 @@
     </fields>
     <fields>
         <fullName>Application_Number__c</fullName>
-        <description>The external ID used by the application collection tool or database for matching to Applicant Opportunities.</description>
+        <description>INTERACTIONS: The external ID used by the application collection tool or database for matching to Applicant Opportunities.</description>
         <externalId>false</externalId>
         <inlineHelpText>The external ID used by the application collection tool or database for matching to Applicant Opportunities.</inlineHelpText>
         <label>Application Number</label>
@@ -309,7 +309,7 @@
     </fields>
     <fields>
         <fullName>Audit_Reason__c</fullName>
-        <description>Lists the errors returned when the Interaction Processor fails and the Interaction Status is set to Audit Needed.</description>
+        <description>INTERACTIONS: Lists the errors returned when the Interaction Processor fails and the Interaction Status is set to Audit Needed.</description>
         <externalId>false</externalId>
         <label>Audit Reason</label>
         <length>1000</length>
@@ -329,7 +329,7 @@
     </fields>
     <fields>
         <fullName>Campaign_Key__c</fullName>
-        <description>Specifies the Campaign that should be connected to the Campaign Member created by this Interaction. If available, it uses the Interaction &quot;Campaign Reference ID&quot; field, otherwise it uses the &quot;Campaign Reference ID&quot; from the associated Campaign.</description>
+        <description>INTERACTIONS: Specifies the Campaign that should be connected to the Campaign Member created by this Interaction. If available, it uses the Interaction &quot;Campaign Reference ID&quot; field, otherwise it uses the &quot;Campaign Reference ID&quot; from the associated Campaign.</description>
         <externalId>false</externalId>
         <formula>IF(ISBLANK(Campaign_Reference_ID__c), CASESAFEID(Campaign__c), Campaign_Reference_ID__c)</formula>
         <label>Campaign Key</label>
@@ -341,7 +341,7 @@
     </fields>
     <fields>
         <fullName>Campaign_Member_Status__c</fullName>
-        <description>The status that should be set on the Campaign Member created for the Campaign. It must match an available status from the Campaign, and it cannot be blank.</description>
+        <description>INTERACTIONS: The status that should be set on the Campaign Member created for the Campaign. It must match an available status from the Campaign, and it cannot be blank.</description>
         <externalId>false</externalId>
         <inlineHelpText>Select the member status that should be set for the Campaign. It must match an available status from the Campaign.</inlineHelpText>
         <label>Campaign Member Status</label>
@@ -392,7 +392,7 @@
     </fields>
     <fields>
         <fullName>Campaign_Reference_ID__c</fullName>
-        <description>An external ID to match to the Campaign. It must either match an existing campaign&apos;s Campaign Reference ID, or a campaign&apos;s Salesforce ID. If filled out, it populates the Interaction &quot;Campaign Key&quot; formula field.</description>
+        <description>INTERACTIONS: An external ID to match to the Campaign. It must either match an existing campaign&apos;s Campaign Reference ID, or a campaign&apos;s Salesforce ID. If filled out, it populates the Interaction &quot;Campaign Key&quot; formula field.</description>
         <externalId>false</externalId>
         <label>Campaign Reference ID</label>
         <length>30</length>
@@ -405,7 +405,7 @@
     <fields>
         <fullName>Campaign__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The main campaign (event, marketing effort, etc.) connected to this Interaction. When the Campaign Member Status field is also set, a Campaign Member will be created for the individual.</description>
+        <description>INTERACTIONS: The main campaign (event, marketing effort, etc.) connected to this Interaction. When the Campaign Member Status field is also set, a Campaign Member will be created for the individual.</description>
         <externalId>false</externalId>
         <inlineHelpText>The main campaign (event, marketing effort, etc.) connected to this Interaction. When the Campaign Member Status field is also set, a Campaign Member will be created for the individual.</inlineHelpText>
         <label>Campaign</label>
@@ -419,7 +419,7 @@
     </fields>
     <fields>
         <fullName>Career__c</fullName>
-        <description>Returns the Career from the Academic Interest if there is one, otherwise it returns the Career from the Recruitment Interest if there is one.</description>
+        <description>INTERACTIONS: Returns the Career from the Academic Interest if there is one, otherwise it returns the Career from the Recruitment Interest if there is one.</description>
         <externalId>false</externalId>
         <formula>IF(ISBLANK(TEXT( Academic_Interest__r.Career__c )),
 IF(ISBLANK(TEXT(Recruitment_Interest__r.Career__c)), &quot;&quot;, TEXT(Recruitment_Interest__r.Career__c)),  
@@ -434,7 +434,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Constituent_ID__c</fullName>
-        <description>The individual&apos;s external ID from another database, used to match on Contact in the Lead and Contact Matching Rules.</description>
+        <description>INTERACTIONS: The individual&apos;s external ID from another database, used to match on Contact in the Lead and Contact Matching Rules.</description>
         <externalId>false</externalId>
         <inlineHelpText>The individual&apos;s external ID from another database.</inlineHelpText>
         <label>Constituent ID</label>
@@ -447,7 +447,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Contact_Account_ID__c</fullName>
-        <description>If this Interaction is associated with a Contact, the 18-digit version of that Contact&apos;s Account ID is displayed here. Used by the Interaction Processor.</description>
+        <description>INTERACTIONS: If this Interaction is associated with a Contact, the 18-digit version of that Contact&apos;s Account ID is displayed here. Used by the Interaction Processor.</description>
         <externalId>false</externalId>
         <formula>CASESAFEID(Contact__r.AccountId)</formula>
         <inlineHelpText>If this Interaction is associated with a Contact, the 18-digit version of that Contact&apos;s Account ID is displayed here.</inlineHelpText>
@@ -460,7 +460,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Contact_Title__c</fullName>
-        <description>The individual&apos;s current job title.</description>
+        <description>INTERACTIONS: The individual&apos;s current job title.</description>
         <externalId>false</externalId>
         <inlineHelpText>Enter the individual&apos;s current job title.</inlineHelpText>
         <label>Contact Title</label>
@@ -474,7 +474,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     <fields>
         <fullName>Contact__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
-        <description>The contact created or updated by this Interaction, set by the Interaction Processor.</description>
+        <description>INTERACTIONS: The contact created or updated by this Interaction, set by the Interaction Processor.</description>
         <externalId>false</externalId>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
@@ -497,7 +497,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Ethnicity__c</fullName>
-        <description>Values are based on the HEDA Ethnicity field, which matches IPEDS standards.</description>
+        <description>INTERACTIONS: Values are based on the HEDA Ethnicity field, which matches IPEDS standards.</description>
         <externalId>false</externalId>
         <label>Ethnicity</label>
         <required>false</required>
@@ -571,7 +571,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Interaction_Source__c</fullName>
-        <description>The method by which the data is being added as an Interaction. Set to &quot;Manual Entry&quot; for hand entry, otherwise it represents the integration source (Webform, Purchase List, etc.) Also used in the Skip Mapping functionality on Interaction Mappings.</description>
+        <description>INTERACTIONS: The method by which the data is being added as an Interaction. Set to &quot;Manual Entry&quot; for hand entry, otherwise it represents the integration source (Webform, Purchase List, etc.) Also used in the Skip Mapping functionality on Interaction Mappings.</description>
         <externalId>false</externalId>
         <label>Interaction Source</label>
         <required>false</required>
@@ -606,7 +606,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Interaction_Status__c</fullName>
-        <description>When set to &quot;New,&quot; the Interaction Processor runs, then updates the Status based on the result to &quot;Imported&quot; or &quot;Audit Needed.&quot;</description>
+        <description>INTERACTIONS: When set to &quot;New,&quot; the Interaction Processor runs, then updates the Status based on the result to &quot;Imported&quot; or &quot;Audit Needed.&quot;</description>
         <externalId>false</externalId>
         <inlineHelpText>Set the Status to &quot;New&quot; and save to kick off the Interaction process.</inlineHelpText>
         <label>Interaction Status</label>
@@ -638,7 +638,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     <fields>
         <fullName>Interaction_Upsert_Key__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>An external ID for upserting Interactions</description>
+        <description>INTERACTIONS: An external ID for upserting Interactions</description>
         <externalId>true</externalId>
         <label>Interaction Upsert Key</label>
         <length>255</length>
@@ -662,7 +662,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     <fields>
         <fullName>Lead_Only__c</fullName>
         <defaultValue>false</defaultValue>
-        <description>Indicates this record should only result in a Lead. If checked, the process will not attempt to match on Contact.</description>
+        <description>INTERACTIONS: Indicates this record should only result in a Lead. If checked, the process will not attempt to match on Contact.</description>
         <externalId>false</externalId>
         <inlineHelpText>Indicates this record should only result in a Lead.</inlineHelpText>
         <label>Lead Only</label>
@@ -672,7 +672,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Lead_Source__c</fullName>
-        <description>The way in which the Lead or Contact&apos;s information was first received.</description>
+        <description>INTERACTIONS: The way in which the Lead or Contact&apos;s information was first received.</description>
         <externalId>false</externalId>
         <inlineHelpText>Indicate the initial source of this data.</inlineHelpText>
         <label>Lead Source</label>
@@ -715,7 +715,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     <fields>
         <fullName>Lead__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The Lead created or updated by this Interaction, set by the Interaction Processor.</description>
+        <description>INTERACTIONS: The Lead created or updated by this Interaction, set by the Interaction Processor.</description>
         <externalId>false</externalId>
         <label>Lead</label>
         <referenceTo>Lead</referenceTo>
@@ -5135,7 +5135,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Opportunity_Close_Date__c</fullName>
-        <description>Set to the Start Date of the Term. If Term Start Date is blank, set to today&apos;s date.</description>
+        <description>INTERACTIONS: Set to the Start Date of the Term. If Term Start Date is blank, set to today&apos;s date.</description>
         <externalId>false</externalId>
         <formula>IF( ISBLANK(Term__r.hed__Start_Date__c), TODAY(), Term__r.hed__Start_Date__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -5147,7 +5147,7 @@ TEXT(Academic_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Opportunity_Key__c</fullName>
-        <description>The Interaction Processor adds the Contact ID to the beginning of this key to match on Opportunities. If this field is blank, no Opportunity will be created. Contact ID + this key should equal the Opportunity Key also updated through workflow.</description>
+        <description>INTERACTIONS: The Interaction Processor adds the Contact ID to the beginning of this key to match on Opportunities. If this field is blank, no Opportunity will be created. Contact ID + this key should equal the Opportunity Key also updated through workflow.</description>
         <externalId>false</externalId>
         <formula>/*The below formula allows for a centralized and decentralized recruitment model.*/ 
 
@@ -5170,7 +5170,7 @@ IF(ISBLANK(Academic_Interest__r.Id), Recruitment_Interest__r.Id, IF(ISBLANK(Acad
     </fields>
     <fields>
         <fullName>Opportunity_Name__c</fullName>
-        <description>Last Name - Term Name, used to set the Name of the Opportunity that will be created or updated.</description>
+        <description>INTERACTIONS: Last Name - Term Name, used to set the Name of the Opportunity that will be created or updated.</description>
         <externalId>false</externalId>
         <formula>Last_Name__c &amp;&quot; - &quot;&amp; Term__r.Name</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -5249,7 +5249,7 @@ IF(ISBLANK(Academic_Interest__r.Id), Recruitment_Interest__r.Id, IF(ISBLANK(Acad
     <fields>
         <fullName>Opportunity__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The Opportunity created or updated by this Interaction, set by the Interaction Processor.</description>
+        <description>INTERACTIONS: The Opportunity created or updated by this Interaction, set by the Interaction Processor.</description>
         <externalId>false</externalId>
         <label>Opportunity</label>
         <referenceTo>Opportunity</referenceTo>
@@ -5263,7 +5263,7 @@ IF(ISBLANK(Academic_Interest__r.Id), Recruitment_Interest__r.Id, IF(ISBLANK(Acad
     <fields>
         <fullName>Primary_Affiliation__c</fullName>
         <defaultValue>false</defaultValue>
-        <description>Indicates the Affiliation created from Affiliated Account should be set to Primary.</description>
+        <description>INTERACTIONS: Indicates the Affiliation created from Affiliated Account should be set to Primary.</description>
         <externalId>false</externalId>
         <inlineHelpText>Check this box to indicate the Affiliated Account is the Contact&apos;s main affiliation for that Account type.</inlineHelpText>
         <label>Primary Affiliation</label>
@@ -5273,7 +5273,7 @@ IF(ISBLANK(Academic_Interest__r.Id), Recruitment_Interest__r.Id, IF(ISBLANK(Acad
     </fields>
     <fields>
         <fullName>Race__c</fullName>
-        <description>Values are based on the HEDA Race field, which matches IPEDS standards.</description>
+        <description>INTERACTIONS: Values are based on the HEDA Race field, which matches IPEDS standards.</description>
         <externalId>false</externalId>
         <label>Race</label>
         <required>false</required>
@@ -5315,7 +5315,7 @@ IF(ISBLANK(Academic_Interest__r.Id), Recruitment_Interest__r.Id, IF(ISBLANK(Acad
     <fields>
         <fullName>Recruitment_Interest__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The general interest the individual is inquiring about for marketing. A lookup to Plan with a filter criteria of Record Type = Recruitment.</description>
+        <description>INTERACTIONS: The general interest the individual is inquiring about for marketing. A lookup to Plan with a filter criteria of Record Type = Recruitment.</description>
         <externalId>false</externalId>
         <inlineHelpText>The general interest the individual is inquiring about for marketing.</inlineHelpText>
         <label>Recruitment Interest</label>
@@ -5378,7 +5378,7 @@ IF(ISBLANK(Academic_Interest__r.Id), Recruitment_Interest__r.Id, IF(ISBLANK(Acad
     <fields>
         <fullName>Term__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The academic term a prospect is interested in. Used to build the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity.</description>
+        <description>INTERACTIONS: The academic term a prospect is interested in. Used to build the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity.</description>
         <externalId>false</externalId>
         <inlineHelpText>Required to create or update an Opportunity.</inlineHelpText>
         <label>Term</label>
