@@ -117,7 +117,7 @@ IF(ISBLANK(Academic_Interest__r.Id), Recruitment_Interest__r.Id, IF(ISBLANK(Acad
         </actions>
         <active>true</active>
         <description>Updates Opportunity Name to Contact Last - Term Name</description>
-        <formula>Name &lt;&gt; Contact__r.LastName + &quot; - &quot; +  Term__r.Name</formula>
+        <formula>AND(Name &lt;&gt; Contact__r.LastName + &quot; - &quot; +  Term__r.Name,RecordType.Name=&apos;Recruitment&apos;)</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
