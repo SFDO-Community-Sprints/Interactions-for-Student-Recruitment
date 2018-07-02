@@ -445,7 +445,7 @@ public class INT_InteractionProcessor {
 
                         for (Datacloud.MatchResult matchResult : dupError.getDuplicateResult().getMatchResults()) {
                             Contact matchedContact;
-
+                        if (matchResult.getEntityType() == 'Contact'){
                             for (Datacloud.MatchRecord match : matchResult.getMatchRecords()) {
                                 // We want to use the oldest matched record, it will be the source Contact.
                                 Contact compareContact = (Contact) match.getRecord();
@@ -454,6 +454,7 @@ public class INT_InteractionProcessor {
                                     matchedContact = compareContact;
                                 }
                             }
+                        }
 
                             // Build new Lead convert with matching records.
                             if (matchedContact != null) { // NPE handling
