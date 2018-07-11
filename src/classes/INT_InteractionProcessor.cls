@@ -354,6 +354,7 @@ public class INT_InteractionProcessor {
                         Database.DuplicateError dupErrorError = (Database.DuplicateError) error;
 
                         for (Datacloud.MatchResult matchResult : dupErrorError.getDuplicateResult().getMatchResults()) {
+                            if (matchResult.getEntityType() == 'Lead'){
                             for (Datacloud.MatchRecord match : matchResult.getMatchRecords()) {
                                 // Grab matched record to use instead of the new one.
                                 interaction.Lead__c = match.getRecord().Id;
@@ -370,6 +371,7 @@ public class INT_InteractionProcessor {
                                     }
                                 }
                             }
+                        }
                         }
                     } else { // Catch-all for all other errors
                         interaction.Audit_Reason__c += ' Reason: Error during Lead insert - ' + error.getMessage() + '.';
