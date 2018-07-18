@@ -2,7 +2,7 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>Admit_Type__c</fullName>
-        <description>The category the potential applicant falls into for recruitment segmentation (Ex: New student, Transfer student, etc.)</description>
+        <description>INTERACTIONS: The category the potential applicant falls into for recruitment segmentation (Ex: New student, Transfer student, etc.)</description>
         <externalId>false</externalId>
         <label>Admit Type</label>
         <required>false</required>
@@ -32,7 +32,7 @@
     <fields>
         <fullName>Affiliated_Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The organizational account (Ex: business, high school, college, etc.) a student is affiliated with. This field along with the Affiliation Role, Affiliation Status, and Primary Affiliation fields creates an Affiliation when converted to a Contact. Filtered to exclude the Administrative Account Record Type.</description>
+        <description>INTERACTIONS: The organizational account (Ex: business, high school, college, etc.) a student is affiliated with. This field along with the Affiliation Role, Affiliation Status, and Primary Affiliation fields creates an Affiliation when converted to a Contact. Filtered to exclude the Administrative Account Record Type.</description>
         <externalId>false</externalId>
         <inlineHelpText>Enter the organizational account (Ex: business, high school, college, etc.) a student is affiliated with.</inlineHelpText>
         <label>Affiliated Account</label>
@@ -45,7 +45,7 @@
     </fields>
     <fields>
         <fullName>Affiliation_Role__c</fullName>
-        <description>The role associated to the Affiliated Account, used in the Interaction Process.</description>
+        <description>INTERACTIONS: The role associated to the Affiliated Account, used in the Interaction Process.</description>
         <externalId>false</externalId>
         <inlineHelpText>Select the role for the affiliation with an organizational account.</inlineHelpText>
         <label>Affiliation Role</label>
@@ -78,7 +78,7 @@
     </fields>
     <fields>
         <fullName>Career__c</fullName>
-        <description>Returns the Career of the Recruitment Plan, if there is one.</description>
+        <description>INTERACTIONS: Returns the Career of the Recruitment Plan, if there is one.</description>
         <externalId>false</externalId>
         <formula>TEXT( Recruitment_Interest__r.Career__c )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -89,7 +89,7 @@
     </fields>
     <fields>
         <fullName>Constituent_ID__c</fullName>
-        <description>A unique external ID field to house a prospect or student&apos;s ID for integration or manual data loading processes. It is also the identification code to be used for Lead Matching Rules as part of the Interaction process.</description>
+        <description>INTERACTIONS: A unique external ID field to house a prospect or student&apos;s ID for integration or manual data loading processes. It is also the identification code to be used for Lead Matching Rules as part of the Interaction process.</description>
         <externalId>false</externalId>
         <label>Constituent ID</label>
         <length>255</length>
@@ -100,7 +100,7 @@
     </fields>
     <fields>
         <fullName>Ethnicity__c</fullName>
-        <description>Based on IPEDs values, which also align with the corresponding HEDA field on Contact.</description>
+        <description>INTERACTIONS: Based on IPEDs values, which also align with the corresponding HEDA field on Contact.</description>
         <externalId>false</externalId>
         <label>Ethnicity</label>
         <required>false</required>
@@ -153,7 +153,7 @@
     <fields>
         <fullName>Primary_Affiliation__c</fullName>
         <defaultValue>false</defaultValue>
-        <description>Tracks whether the Affiliated Account is considered primary, used in the Interaction process.</description>
+        <description>INTERACTIONS: Tracks whether the Affiliated Account is considered primary, used in the Interaction process.</description>
         <externalId>false</externalId>
         <inlineHelpText>Check if the affiliation to the organizational account should be considered primary after Lead convert.</inlineHelpText>
         <label>Primary Affiliation</label>
@@ -162,7 +162,7 @@
     </fields>
     <fields>
         <fullName>Race__c</fullName>
-        <description>Based on IPEDs values, which also align with the corresponding HEDA field on Contact.</description>
+        <description>INTERACTIONS: Based on IPEDs values, which also align with the corresponding HEDA field on Contact.</description>
         <externalId>false</externalId>
         <label>Race</label>
         <required>false</required>
@@ -203,7 +203,7 @@
     <fields>
         <fullName>Recruitment_Interest__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The marketable name for an official Academic Interest (or group of interests) that the individual is inquiring about. A lookup to Plan with a filter criteria of Record Type = Recruitment. Tracked on the Opportunity when converted to a Contact.</description>
+        <description>INTERACTIONS: The marketable name for an official Academic Interest (or group of interests) that the individual is inquiring about. A lookup to Plan with a filter criteria of Record Type = Recruitment. Tracked on the Opportunity when converted to a Contact.</description>
         <externalId>false</externalId>
         <inlineHelpText>The marketable name for an official Academic Interest (or group of Interests) that the individual is inquiring about.</inlineHelpText>
         <label>Recruitment Interest</label>
@@ -226,7 +226,7 @@
     <fields>
         <fullName>Term__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The academic term a prospect is interested in. Tracked on the Opportunity when converted to a Contact.</description>
+        <description>INTERACTIONS: The academic term a prospect is interested in. Tracked on the Opportunity when converted to a Contact.</description>
         <externalId>false</externalId>
         <inlineHelpText>The academic term a prospect is interested in.</inlineHelpText>
         <label>Term</label>

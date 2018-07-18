@@ -3,7 +3,7 @@
     <fields>
         <fullName>Upsert_Key__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>This field houses the unique ID key value (set by the Affiliation: Update Upsert Key workflow rule) used by the Interaction Processor to determine whether to create a new Affiliation or update an existing Affiliation. The standard key format is: ContactID.AffilAccountID</description>
+        <description>INTERACTIONS: This field houses the unique ID key value (set by the Affiliation: Update Upsert Key workflow rule) used by the Interaction Processor to determine whether to create a new Affiliation or update an existing Affiliation. The standard key format is: ContactID.AffilAccountID</description>
         <externalId>true</externalId>
         <label>Upsert Key</label>
         <length>255</length>

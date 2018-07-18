@@ -2,7 +2,7 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <fieldUpdates>
         <fullName>Campaign_Member_Key_Update_to_Lead_Camp</fullName>
-        <description>Sets the Campaign Member Key field on Campaign Member to the 18-Digit Lead/Contact ID + the 18-Digit Campaign Id.</description>
+        <description>INTERACTIONS: Sets the Campaign Member Key field on Campaign Member to the 18-Digit Lead/Contact ID + the 18-Digit Campaign Id.</description>
         <field>Campaign_Member_Key__c</field>
         <formula>Lead_Contact_ID__c + &quot;.&quot; + CASESAFEID(CampaignId)</formula>
         <name>Campaign Member Key: Update to Lead.Camp</name>
@@ -17,7 +17,7 @@
             <type>FieldUpdate</type>
         </actions>
         <active>true</active>
-        <description>Update Campaign Member Key if it does not equal 18-Digit Lead/Contact ID + &apos;.&apos; + 18-Digit Campaign Member ID.</description>
+        <description>INTERACTIONS: Update Campaign Member Key if it does not equal 18-Digit Lead/Contact ID + &apos;.&apos; + 18-Digit Campaign Member ID.</description>
         <formula>Campaign_Member_Key__c &lt;&gt; Lead_Contact_ID__c + &quot;.&quot; + CASESAFEID(CampaignId)</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

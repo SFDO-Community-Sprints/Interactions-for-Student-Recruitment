@@ -19,7 +19,7 @@
     <fields>
         <fullName>Academic_Interest__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The official interest the individual applies for. A lookup to Plan with a filter criteria of Record Type = Academic.</description>
+        <description>INTERACTIONS: The official interest the individual applies for. A lookup to Plan with a filter criteria of Record Type = Academic.</description>
         <externalId>false</externalId>
         <inlineHelpText>The official interest the individual applies for.</inlineHelpText>
         <label>Academic Interest</label>
@@ -42,7 +42,7 @@
     </fields>
     <fields>
         <fullName>Admit_Type__c</fullName>
-        <description>The category the potential applicant falls into for recruitment segmentation (Ex: New student, Transfer student, etc.)</description>
+        <description>INTERACTIONS: The category the potential applicant falls into for recruitment segmentation (Ex: New student, Transfer student, etc.)</description>
         <externalId>false</externalId>
         <label>Admit Type</label>
         <required>false</required>
@@ -73,7 +73,7 @@
     <fields>
         <fullName>Affiliated_Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The organizational account (Ex: business, high school, college, etc.) a student is affiliated with. Filtered to exclude the Administrative Account Record Type.</description>
+        <description>INTERACTIONS: The organizational account (Ex: business, high school, college, etc.) a student is affiliated with. Filtered to exclude the Administrative Account Record Type.</description>
         <externalId>false</externalId>
         <inlineHelpText>The organizational account (Ex: business, high school, college, etc.) a student is affiliated with.</inlineHelpText>
         <label>Affiliated Account</label>
@@ -87,7 +87,7 @@
     </fields>
     <fields>
         <fullName>Application_Number__c</fullName>
-        <description>The external ID used by the application collection tool or database for matching to Applicant Opportunities. Only displays on the Applicant Opportunity page layout.</description>
+        <description>INTERACTIONS: The external ID used by the application collection tool or database for matching to Applicant Opportunities. Only displays on the Applicant Opportunity page layout.</description>
         <externalId>false</externalId>
         <inlineHelpText>The external ID used by the application collection tool or database for matching to Applicant Opportunities.</inlineHelpText>
         <label>Application Number</label>
@@ -101,7 +101,7 @@
     </fields>
     <fields>
         <fullName>Application_Submitted_Date__c</fullName>
-        <description>A date stamp (set by the Opportunity: Set Application Submitted Date workflow rule) to record when an Opportunity stage is changed to Applicant.</description>
+        <description>INTERACTIONS: A date stamp (set by the Opportunity: Set Application Submitted Date workflow rule) to record when an Opportunity stage is changed to Applicant.</description>
         <externalId>false</externalId>
         <inlineHelpText>The date when the Opportunity was changed from an inquiry to an applicant, based on Stage.</inlineHelpText>
         <label>Application Submitted Date</label>
@@ -112,7 +112,7 @@
     </fields>
     <fields>
         <fullName>Career__c</fullName>
-        <description>Returns the Career from the Academic Interest if there is one, otherwise it returns the Career from the Recruitment Interest if there is one. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity.</description>
+        <description>INTERACTIONS: Returns the Career from the Academic Interest if there is one, otherwise it returns the Career from the Recruitment Interest if there is one. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity.</description>
         <externalId>false</externalId>
         <formula>/*If an Academic Interest exists for the Opportunity, retrieve the associated Career*/ 
 IF(NOT(ISBLANK(Academic_Interest__c)),TEXT(Academic_Interest__r.Career__c), 
@@ -129,7 +129,7 @@ TEXT(Recruitment_Interest__r.Career__c))</formula>
     <fields>
         <fullName>Contact__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
-        <description>Connects this Opportunity to a Contact.</description>
+        <description>INTERACTIONS: Connects this Opportunity to a Contact.</description>
         <externalId>false</externalId>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
@@ -142,7 +142,7 @@ TEXT(Recruitment_Interest__r.Career__c))</formula>
     </fields>
     <fields>
         <fullName>Department__c</fullName>
-        <description>Returns the Department from the Academic Interest if there is one, otherwise it returns the Department from the Recruitment Interest if there is one.</description>
+        <description>INTERACTIONS: Returns the Department from the Academic Interest if there is one, otherwise it returns the Department from the Recruitment Interest if there is one.</description>
         <externalId>false</externalId>
         <formula>/*If an Academic Interest exists for the Opportunity, retrieve the associated Department from the Academic Interest*/ 
 IF(NOT(ISBLANK(Academic_Interest__c)),(  Academic_Interest__r.Department__r.Name  ), 
@@ -158,7 +158,7 @@ IF(NOT(ISBLANK(Academic_Interest__c)),(  Academic_Interest__r.Department__r.Name
     </fields>
     <fields>
         <fullName>First_Inquiry_Source__c</fullName>
-        <description>Captures the first lead source when the opportunity record is created. This is set by the Opportunity: Set First Inquiry Source workflow rule.</description>
+        <description>INTERACTIONS: Captures the first lead source when the opportunity record is created. This is set by the Opportunity: Set First Inquiry Source workflow rule.</description>
         <externalId>false</externalId>
         <inlineHelpText>The first Lead Source of the Opportunity.</inlineHelpText>
         <label>First Inquiry Source</label>
@@ -171,7 +171,7 @@ IF(NOT(ISBLANK(Academic_Interest__c)),(  Academic_Interest__r.Department__r.Name
     </fields>
     <fields>
         <fullName>First_Recruitment_Interest__c</fullName>
-        <description>Captures the first Recruitment Interest when the Opportunity record is created. This is set by the Opportunity: Set First Recruitment Interest workflow rule.</description>
+        <description>INTERACTIONS: Captures the first Recruitment Interest when the Opportunity record is created. This is set by the Opportunity: Set First Recruitment Interest workflow rule.</description>
         <externalId>false</externalId>
         <inlineHelpText>The first Recruitment Interest on the Opportunity.</inlineHelpText>
         <label>First Recruitment Interest</label>
@@ -184,7 +184,7 @@ IF(NOT(ISBLANK(Academic_Interest__c)),(  Academic_Interest__r.Department__r.Name
     </fields>
     <fields>
         <fullName>Inquiry_Date__c</fullName>
-        <description>A date stamp (set by the Opportunity: Set Inquiry Date workflow rule) to capture when an Opportunity is created.</description>
+        <description>INTERACTIONS: A date stamp (set by the Opportunity: Set Inquiry Date workflow rule) to capture when an Opportunity is created.</description>
         <externalId>false</externalId>
         <inlineHelpText>The date when the Opportunity was created.</inlineHelpText>
         <label>Inquiry Date</label>
@@ -209,7 +209,7 @@ IF(NOT(ISBLANK(Academic_Interest__c)),(  Academic_Interest__r.Department__r.Name
     <fields>
         <fullName>Opportunity_Key__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>A unique external ID text field which determines whether an Interaction will create a new Opportunity or edit an existing Opportunity. Built using the Contact’s 18-digit ID, Career, Term’s 158-digit ID, and Recruitment/Academic Interest’s 18-digit ID (if applicable) to ensure uniqueness and support of both a centralized and decentralized recruitment process. Set by the Interactions Processor.</description>
+        <description>INTERACTIONS: A unique external ID text field which determines whether an Interaction will create a new Opportunity or edit an existing Opportunity. Built using the Contact’s 18-digit ID, Career, Term’s 158-digit ID, and Recruitment/Academic Interest’s 18-digit ID (if applicable) to ensure uniqueness and support of both a centralized and decentralized recruitment process. Set by the Interactions Processor.</description>
         <externalId>true</externalId>
         <label>Opportunity Key</label>
         <length>255</length>
@@ -222,7 +222,7 @@ IF(NOT(ISBLANK(Academic_Interest__c)),(  Academic_Interest__r.Department__r.Name
     <fields>
         <fullName>Recruitment_Interest__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The marketable name for an official Academic Interest (or group of interests) that the individual is inquiring about. A lookup to Plan with a filter criteria of Record Type = Recruitment. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity for a decentralized recruitment process.</description>
+        <description>INTERACTIONS: The marketable name for an official Academic Interest (or group of interests) that the individual is inquiring about. A lookup to Plan with a filter criteria of Record Type = Recruitment. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity for a decentralized recruitment process.</description>
         <externalId>false</externalId>
         <inlineHelpText>The marketable name for an official Academic Interest (or group of interests) that the individual is inquiring about.</inlineHelpText>
         <label>Recruitment Interest</label>
@@ -246,7 +246,7 @@ IF(NOT(ISBLANK(Academic_Interest__c)),(  Academic_Interest__r.Department__r.Name
     <fields>
         <fullName>Term__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The academic term a prospect is interested in. Tracked on the Opportunity when converted to a Contact. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity.</description>
+        <description>INTERACTIONS: The academic term a prospect is interested in. Tracked on the Opportunity when converted to a Contact. Used in building the Opportunity Key for the Interaction Processor to determine whether to create a new Opportunity or update an existing Opportunity.</description>
         <externalId>false</externalId>
         <inlineHelpText>The academic term a prospect is interested in.</inlineHelpText>
         <label>Term</label>

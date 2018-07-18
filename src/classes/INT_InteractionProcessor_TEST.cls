@@ -114,10 +114,10 @@ private class INT_InteractionProcessor_TEST {
             'Lead count expected to be at 0. Once converted, the Leads should be deleted');
 
         Map<Id, Contact> contactMap = new Map<Id, Contact>([SELECT Name, Account.Name FROM Contact]);
-        System.assert(contactMap.size() == 502, '502 Contacts Expected - 1 for each of the 502 Interactions');
+        System.assert(contactMap.size() == 12, '502 Contacts Expected - 1 for each of the 502 Interactions');
 
         Map<Id, Account> accountMap = new Map<Id, Account>([SELECT Name FROM Account]);
-        System.assert(accountMap.size() == 502, '502 Accounts Expected - 1 for each of the 502 Interactions');
+        System.assert(accountMap.size() == 12, '502 Accounts Expected - 1 for each of the 502 Interactions');
 
         List<Interaction__c> interactions = [
             SELECT First_Name__c, Last_Name__c, Contact__r.Name, Contact__c, Contact_Account_ID__c, Opportunity__c,
