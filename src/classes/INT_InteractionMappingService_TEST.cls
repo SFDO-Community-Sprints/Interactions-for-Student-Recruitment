@@ -5,14 +5,14 @@
 ******************************************/
 @IsTest
 private class INT_InteractionMappingService_TEST {
-    @testSetup 
+    @TestSetup
     static void setUpTest() {
         // Create and insert Interaction Mapping Test Data
         List<Interaction_Mapping__c> testMappings = INT_TestDataFactory.createTestMappings();
         insert testMappings;
     }
 
-    @isTest
+    @IsTest
     static void testCreateContact() {
         // Arrange
         Interaction__c testInteraction = new Interaction__c(
@@ -37,7 +37,7 @@ private class INT_InteractionMappingService_TEST {
         System.assert(c.LastName == 'Contact');
     }
 
-    @isTest
+    @IsTest
     static void testCreateContactExcludedSources() {
         // Arrange
         Interaction__c testInteraction = new Interaction__c(
@@ -64,7 +64,7 @@ private class INT_InteractionMappingService_TEST {
        	System.assert(c.LastName == 'Else');
     }
 
-    @isTest
+    @IsTest
     static void testMapFromLeadSources() {
         // Arrange
         Lead testLead = new Lead(

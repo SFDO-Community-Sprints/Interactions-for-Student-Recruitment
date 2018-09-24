@@ -3,6 +3,7 @@
 * Author: Sierra-Cedar
 * Description: Test data factory for Interactions
 ******************************************/
+@IsTest
 public class INT_TestDataFactory {
     /**
      * @description Creates and returns a List of Interaction_Mapping__c test data

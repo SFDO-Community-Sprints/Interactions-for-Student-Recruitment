@@ -90,7 +90,7 @@ public class INT_InteractionMappingService {
                     || (interaction.get(mapping.Source_Field_API_Name__c) != null
                         && interaction.get(mapping.Source_Field_API_Name__c) != ''
                         && ((objectCheckboxesMap.containsKey(mapping.Target_Object_API_Name__c)
-                                && !objectCheckboxesMap.get(mapping.Target_Object_API_Name__c).contains(mapping.Source_Field_API_Name__c.toLowerCase()))
+                                && !objectCheckboxesMap.get(mapping.Target_Object_API_Name__c).contains(mapping.Target_Field_API_Name__c.toLowerCase()))
                             || String.valueOf(interaction.get(mapping.Source_Field_API_Name__c)) != 'false'))
                 ) {
                     theObject.put(mapping.Target_Field_API_Name__c, interaction.get(mapping.Source_Field_API_Name__c));

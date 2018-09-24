@@ -3,9 +3,9 @@
 * Author: Sierra-Cedar
 * Description: Unit tests for INT_OpportunityContactRoleHandler.cls
 ******************************************/
-@isTest
+@IsTest
 private class INT_OpportunityContactRoleHandler_TEST {
-    @testSetup static void setUp() {
+    @TestSetup static void setUp() {
         hed__Trigger_Handler__c oppHandler = new hed__Trigger_Handler__c(
             Name = 'Update Opportunity Contact Role',
             hed__Object__c = 'Opportunity',
@@ -17,7 +17,8 @@ private class INT_OpportunityContactRoleHandler_TEST {
         insert oppHandler;
     }
 
-    private static testmethod void testOpportunityContactRoleHandler() {
+    @IsTest
+    static void testOpportunityContactRoleHandler() {
         // Arrange
         Contact aContact = new Contact(
             LastName = 'Johnson',
@@ -44,6 +45,7 @@ private class INT_OpportunityContactRoleHandler_TEST {
             FROM OpportunityContactRole
             WHERE ContactId = :aContact.Id
         ];
+
         System.assertEquals(1, assertRoles.size(), 'Once Opportunity Contact Role should have been created.');
         System.assertEquals(true, assertRoles[0].IsPrimary, 'Role should be primary.');
         System.assertEquals('Opportunity Contact', assertRoles[0].Role, 'Role should be \'Opportunity Contact\'.');
