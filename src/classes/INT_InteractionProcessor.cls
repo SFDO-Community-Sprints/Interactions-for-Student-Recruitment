@@ -412,7 +412,10 @@ public class INT_InteractionProcessor {
      */
     private List<Database.LeadConvert> convertLeads(List<Database.LeadConvert> leadsToConvert) {
         List<Database.LeadConvert> leadsToReconvert = new List<Database.LeadConvert>();
-        Database.LeadConvertResult[] leadConvertResults = Database.convertLead(leadsToConvert, false); // Convert Leads
+        //Setting DMLOptions to allowSave allows duplicate matching rules that alert rather than block to save results.  This allows the standard duplicate account rule to be bypassed.
+        Database.DMLOptions dml = new Database.DMLOptions();
+		dml.DuplicateRuleHeader.AllowSave = true;
+        Database.LeadConvertResult[] leadConvertResults = Database.convertLead(leadsToConvert, dml); // Convert Leads
 
         for (Database.LeadConvertResult lcr : leadConvertResults) {
             Interaction__c interaction = (leadIdToInteractionMap.containsKey(lcr.getLeadId())) ? leadIdToInteractionMap.get(lcr.getLeadId()) : null;
