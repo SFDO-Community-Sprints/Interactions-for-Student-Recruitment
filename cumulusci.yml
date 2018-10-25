@@ -15,6 +15,12 @@ flows:
                 task: deploy
                 options:
                     path: config/qa
+
+    deploy_unmanaged:
+        steps:
+            4:
+                # Skip uninstall_packaged_incremental for now
+                task: None
         
 
 orgs:
