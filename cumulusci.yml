@@ -1,0 +1,25 @@
+project:
+    name: Interactions-for-Student-Recruitment
+    package:
+        name:  Interactions for Student Recruitment
+        namespace: interactions
+        api_version: '41.0'
+    dependencies:
+        - github: 'https://github.com/SalesforceFoundation/HEDAP'
+
+
+flows:
+    config_qa:
+        steps:
+            3:
+                task: deploy
+                options:
+                    path: config/qa
+        
+
+orgs:
+    scratch:
+        dev_namespaced:
+            config_file: orgs/dev.json
+            days: 7
+            namespaced: True

@@ -1,0 +1,10 @@
+{
+  "orgName": "Interactions for Student Recruitment - Feature Test Org",
+  "edition": "Developer",
+  "orgPreferences" : {
+    "enabled": [
+      "S1DesktopEnabled",
+      "ChatterEnabled"
+    ]
+  }
+}

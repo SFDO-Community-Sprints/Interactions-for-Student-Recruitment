@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Interactions for Student Recruitment</fullName>
     <types>
         <members>INT_InteractionMappingService</members>
         <members>INT_InteractionMappingService_TEST</members>
@@ -16,6 +17,7 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>Interaction__c.Recruitment_Interaction</members>
         <members>Opportunity.Applicant_Opportunity</members>
         <members>Opportunity.Inquiry_Opportunity</members>
         <members>Plan__c.Academic_Interest</members>
@@ -27,14 +29,73 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>Campaign.Campaign_Key__c</members>
-        <members>Campaign.Campaign_Reference_ID__c</members>
         <members>CampaignMember.Campaign_Member_Key__c</members>
         <members>CampaignMember.Lead_Contact_ID__c</members>
+        <members>Campaign.Campaign_Key__c</members>
+        <members>Campaign.Campaign_Reference_ID__c</members>
         <members>Contact.Constituent_ID__c</members>
         <members>Contact.Primary_Academic_Program__c</members>
         <members>Contact.Primary_Educational_Institution__c</members>
-        <members>hed__Affiliation__c.Upsert_Key__c</members>
+        <members>Interaction_Mapping__c.Active__c</members>
+        <members>Interaction_Mapping__c.Insert_Null__c</members>
+        <members>Interaction_Mapping__c.Skip_Mapping__c</members>
+        <members>Interaction_Mapping__c.Source_Field_API_Name__c</members>
+        <members>Interaction_Mapping__c.Source_Object_API_Name__c</members>
+        <members>Interaction_Mapping__c.Target_Field_API_Name__c</members>
+        <members>Interaction_Mapping__c.Target_Object_API_Name__c</members>
+        <members>Interaction__c.Academic_Interest__c</members>
+        <members>Interaction__c.Additional_Campaign_Key__c</members>
+        <members>Interaction__c.Additional_Campaign_Member_Status__c</members>
+        <members>Interaction__c.Additional_Campaign_Reference_ID__c</members>
+        <members>Interaction__c.Additional_Campaign__c</members>
+        <members>Interaction__c.Admit_Type__c</members>
+        <members>Interaction__c.Affiliated_Account__c</members>
+        <members>Interaction__c.Affiliation_Key__c</members>
+        <members>Interaction__c.Affiliation_Role__c</members>
+        <members>Interaction__c.Affiliation_Status__c</members>
+        <members>Interaction__c.Application_Number__c</members>
+        <members>Interaction__c.Audit_Reason__c</members>
+        <members>Interaction__c.Birthdate__c</members>
+        <members>Interaction__c.Campaign_Key__c</members>
+        <members>Interaction__c.Campaign_Member_Status__c</members>
+        <members>Interaction__c.Campaign_Reference_ID__c</members>
+        <members>Interaction__c.Campaign__c</members>
+        <members>Interaction__c.Career__c</members>
+        <members>Interaction__c.Constituent_ID__c</members>
+        <members>Interaction__c.Contact_Account_ID__c</members>
+        <members>Interaction__c.Contact_Title__c</members>
+        <members>Interaction__c.Contact__c</members>
+        <members>Interaction__c.Email__c</members>
+        <members>Interaction__c.Ethnicity__c</members>
+        <members>Interaction__c.First_Name__c</members>
+        <members>Interaction__c.Gender__c</members>
+        <members>Interaction__c.Home_Phone__c</members>
+        <members>Interaction__c.Interaction_Source__c</members>
+        <members>Interaction__c.Interaction_Status__c</members>
+        <members>Interaction__c.Interaction_Upsert_Key__c</members>
+        <members>Interaction__c.Last_Name__c</members>
+        <members>Interaction__c.Lead_Only__c</members>
+        <members>Interaction__c.Lead_Source__c</members>
+        <members>Interaction__c.Lead__c</members>
+        <members>Interaction__c.Mailing_City__c</members>
+        <members>Interaction__c.Mailing_Country__c</members>
+        <members>Interaction__c.Mailing_Postal_Code__c</members>
+        <members>Interaction__c.Mailing_State__c</members>
+        <members>Interaction__c.Mailing_Street__c</members>
+        <members>Interaction__c.Middle_Name__c</members>
+        <members>Interaction__c.Mobile_Phone__c</members>
+        <members>Interaction__c.Opportunity_Close_Date__c</members>
+        <members>Interaction__c.Opportunity_Key__c</members>
+        <members>Interaction__c.Opportunity_Name__c</members>
+        <members>Interaction__c.Opportunity_Stage__c</members>
+        <members>Interaction__c.Opportunity__c</members>
+        <members>Interaction__c.Primary_Affiliation__c</members>
+        <members>Interaction__c.Race__c</members>
+        <members>Interaction__c.Recruitment_Interest__c</members>
+        <members>Interaction__c.Salutation__c</members>
+        <members>Interaction__c.Term__c</members>
+        <members>Interaction__c.University_Email__c</members>
+        <members>Interactions_PreProcessing__c.Active__c</members>
         <members>Lead.Admit_Type__c</members>
         <members>Lead.Affiliated_Account__c</members>
         <members>Lead.Affiliation_Role__c</members>
@@ -62,6 +123,16 @@
         <members>Opportunity.Opportunity_Key__c</members>
         <members>Opportunity.Recruitment_Interest__c</members>
         <members>Opportunity.Term__c</members>
+        <members>Plan__c.Active__c</members>
+        <members>Plan__c.CIP_Code__c</members>
+        <members>Plan__c.Career__c</members>
+        <members>Plan__c.Degree__c</members>
+        <members>Plan__c.Department__c</members>
+        <members>Plan__c.Plan_Code__c</members>
+        <members>Plan__c.Plan_Type__c</members>
+        <members>Plan__c.Recruitment_Interest__c</members>
+        <members>Plan__c.Type__c</members>
+        <members>hed__Affiliation__c.Upsert_Key__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -72,8 +143,8 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>Interaction__c</members>
         <members>Interaction_Mapping__c</members>
+        <members>Interaction__c</members>
         <members>Plan__c</members>
         <name>CustomTab</name>
     </types>
@@ -82,22 +153,24 @@
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>Plan__c-Academic Interest Layout</members>
-        <members>Plan__c-Recruitment Interest Layout</members>
+        <members>Interaction_Mapping__c-Interaction Mapping Layout</members>
+        <members>Interaction__c-Interaction Layout</members>
         <members>Opportunity-Applicant Opportunity</members>
         <members>Opportunity-Inquiry Opportunity</members>
-        <members>Interaction__c-Interaction Layout</members>
-        <members>Interaction_Mapping__c-Interaction Mapping Layout</members>
+        <members>Plan__c-Academic Interest Layout</members>
+        <members>Plan__c-Recruitment Interest Layout</members>
         <name>Layout</name>
     </types>
     <types>
-        <members>Interaction__c.All</members>
-        <members>Interaction_Mapping__c.All</members>
         <members>Interaction_Mapping__c.Affiliation</members>
         <members>Interaction_Mapping__c.All</members>
         <members>Interaction_Mapping__c.CampaignMember</members>
         <members>Interaction_Mapping__c.Contact</members>
+        <members>Interaction_Mapping__c.Interaction_to_Lead</members>
+        <members>Interaction_Mapping__c.Lead_to_Interaction</members>
         <members>Interaction_Mapping__c.Opportunity</members>
+        <members>Interaction_Mapping__c.School</members>
+        <members>Interaction__c.All</members>
         <members>Plan__c.Academic_Interests</members>
         <members>Plan__c.All</members>
         <members>Plan__c.Recruitment_Interests</members>
@@ -106,12 +179,6 @@
     <types>
         <members>Create_Interactions</members>
         <name>PermissionSet</name>
-    </types>
-    <types>
-        <members>Admin</members>
-        <members>Interactions User</members>
-        <members>Interactions View Only</members>
-        <name>Profile</name>
     </types>
     <types>
         <members>Campaign.New_Interaction</members>
@@ -127,11 +194,32 @@
         <name>ReportType</name>
     </types>
     <types>
-        <members>CampaignMember</members>
-        <members>hed__Trigger_Handler__c</members>
-        <members>hed__Affiliation__c</members>
-        <members>Opportunity</members>
-        <name>Workflow</name>
+        <members>Interaction_Mapping__c.Disallow_Interaction_as_Target_wo_Lead</members>
+        <members>Interaction_Mapping__c.Disallow_Lead_as_Source_wo_Interaction</members>
+        <name>ValidationRule</name>
+    </types>
+    <types>
+        <members>CampaignMember.Campaign_Member_Key_Update_to_Lead_Camp</members>
+        <members>Opportunity.Opportunity_Application_Submitted_Date</members>
+        <members>Opportunity.Opportunity_First_Recruitment_Interest</members>
+        <members>Opportunity.Opportunity_Key_Set_Based_on_Career</members>
+        <members>Opportunity.Opportunity_Name_Set_to_Last_Term</members>
+        <members>Opportunity.Opportunity_Set_First_Inquiry_Source</members>
+        <members>Opportunity.Opportunity_Set_Inquiry_Date</members>
+        <members>hed__Affiliation__c.Upsert_Key_Set_to_Contact_Account</members>
+        <members>hed__Trigger_Handler__c.Trigger_Handler_Set_Name_to_Class</members>
+        <name>WorkflowFieldUpdate</name>
+    </types>
+    <types>
+        <members>CampaignMember.Campaign Member%3A Update Campaign Member Key for Lead</members>
+        <members>Opportunity.Opportunity%3A Set Application Submitted Date</members>
+        <members>Opportunity.Opportunity%3A Set First Recruitment Interest</members>
+        <members>Opportunity.Opportunity%3A Set Inquiry Date</members>
+        <members>Opportunity.Opportunity%3A Update Name</members>
+        <members>Opportunity.Opportunity%3A Update Opportunity Key</members>
+        <members>hed__Affiliation__c.Affiliation%3A Update Upsert Key</members>
+        <members>hed__Trigger_Handler__c.Trigger Handler%3A Update Name</members>
+        <name>WorkflowRule</name>
     </types>
     <version>41.0</version>
 </Package>

@@ -491,7 +491,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Interaction_Mapping__c.Interaction_Source_Field_API_Name__c</field>
+        <field>Interaction_Mapping__c.Source_Field_API_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
