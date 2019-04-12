@@ -3,16 +3,16 @@
 * Author: Sierra-Cedar
 * Description: Unit Tests for INT_InteractionProcessor.cls
 ******************************************/
-@isTest
+@IsTest
 private class INT_InteractionProcessor_TEST {
-    @testSetup
+    @TestSetup
     static void setUpTest() {
         // Create and insert Interaction Mapping Test Data
         List<Interaction_Mapping__c> testMappings = INT_TestDataFactory.createTestMappings();
         insert testMappings;
     }
 
-    @isTest
+    @IsTest
     static void testInsertDupeLeadsOnlyInImport() {
         // Arrange
         List<Interaction__c> interactionsToInsert = new List<Interaction__c>();
@@ -63,7 +63,7 @@ private class INT_InteractionProcessor_TEST {
                 'Duplicate pre-processing should have prevented the processing of duplicate records.');
     }
 
-    @isTest
+    @IsTest
     static void testBulkInsertLeadsOnly() {
         // Arrange
         List<Interaction__c> interactionsToInsert = INT_TestDataFactory.createBulkTestInteractions();
@@ -84,7 +84,7 @@ private class INT_InteractionProcessor_TEST {
         System.assert(accounts.size() == 0);
     }
 
-    @isTest
+    @IsTest
     static void testBulkInteractionInsert() {
         // Arrange
         List<Interaction__c> interactionsToInsert = INT_TestDataFactory.createBulkTestInteractions();
@@ -133,7 +133,7 @@ private class INT_InteractionProcessor_TEST {
         }
     }
 
-    @isTest
+    @IsTest
     static void testPreProcessing() {
         // Arrange
         List<Interaction__c> interactionsToInsert = new List<Interaction__c>();
@@ -179,7 +179,7 @@ private class INT_InteractionProcessor_TEST {
         System.assert(interactions[1].Interaction_Status__c == 'Imported');
     }
 
-    @isTest
+    @IsTest
     static void testOpportunityCreation() {
         // Arrange
         Map<String, Schema.RecordTypeInfo> accRTInfo = Account.SObjectType.getDescribe().getRecordTypeInfosByName();
@@ -274,7 +274,7 @@ private class INT_InteractionProcessor_TEST {
         System.assertEquals(assertInteraction.Career__c, assertOppty.Career__c, 'Career__c should have been copied over to Opportunity.');
     }
 
-    @isTest
+    @IsTest
     static void testSkipMappingSources() {
         // Arrange
         List<Interaction__c> interactionsToInsert = new List<Interaction__c>();
@@ -305,7 +305,7 @@ private class INT_InteractionProcessor_TEST {
         System.assert(accountMap.size() == 1, '1 Account Expected');
     }
 
-    @isTest
+    @IsTest
     static void testCampaignMemberCreation() {
         // Arrange
         List<Campaign> testCampaigns = new List<Campaign>();
@@ -359,7 +359,7 @@ private class INT_InteractionProcessor_TEST {
         System.assertEquals(assertContacts[0].Id, campaignMemberMap.get(testAddlCampaign.Id).ContactId, 'Contact Id should match Contact created.');
     }
 
-    @isTest
+    @IsTest
     static void testCMCreationWithExistingLeadAndCM() {
         // Arrange
         Lead testLead = new Lead(

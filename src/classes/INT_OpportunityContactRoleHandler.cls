@@ -4,13 +4,13 @@
 * Description: Uses the HEDA Table Driven Trigger Management to update Opportunities when Contact Roles Change
 ******************************************/
 global without sharing class INT_OpportunityContactRoleHandler extends hed.TDTM_Runnable {
-    global override DmlWrapper run(List<SObject> newlist, List<SObject> oldlist,
+    global override DmlWrapper run(List<SObject> newList, List<SObject> oldlist,
         hed.TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult
     ) {
         List<OpportunityContactRole> rolesToInsert = new List<OpportunityContactRole>();
         DmlWrapper dmlWrapper = new DmlWrapper();
 
-        for (SObject anSObject : newlist) {
+        for (SObject anSObject : newList) {
             Opportunity anOpportunity = (Opportunity) anSObject;
 
             if (anOpportunity.Contact__c != null) {
@@ -60,7 +60,7 @@ global without sharing class INT_OpportunityContactRoleHandler extends hed.TDTM_
     }
 
     // Update opportunity contact roles in another context, Salesforce currently not setting primary
-    @future
+    @Future
     public static void updateRolesFuture(List<String> roleIds) {
         updateRoles(roleIds);
     }

@@ -3,6 +3,7 @@
 * Author: Sierra-Cedar
 * Description: Test data factory for Interactions
 ******************************************/
+@IsTest
 public class INT_TestDataFactory {
     /**
      * @description Creates and returns a List of Interaction_Mapping__c test data
@@ -347,6 +348,24 @@ public class INT_TestDataFactory {
             Active__c = true
         );
         testMappingsToInsert.add(opportunityRecruitPlanMapping);
+
+        Interaction_Mapping__c interactionFirstNameFromLeadMapping = new Interaction_Mapping__c(
+            Target_Object_API_Name__c = 'Interaction__c',
+            Source_Object_API_Name__c = 'Lead',
+            Source_Field_API_Name__c = 'FirstName',
+            Target_Field_API_Name__c = 'First_Name__c',
+            Active__c = true
+        );
+        testMappingsToInsert.add(interactionFirstNameFromLeadMapping);
+
+        Interaction_Mapping__c interactionLastNameFromLeadMapping = new Interaction_Mapping__c(
+            Target_Object_API_Name__c = 'Interaction__c',
+            Source_Object_API_Name__c = 'Lead',
+            Source_Field_API_Name__c = 'LastName',
+            Target_Field_API_Name__c = 'Last_Name__c',
+            Active__c = true
+        );
+        testMappingsToInsert.add(interactionLastNameFromLeadMapping);
 
         return testMappingsToInsert;
     }

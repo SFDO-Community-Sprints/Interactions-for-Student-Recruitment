@@ -86,7 +86,7 @@ public class INT_InteractionProcessor {
     private LeadStatus convertStatus {
         get {
             if (convertStatus == null) {
-                convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted = true LIMIT 1];
+                convertStatus = [SELECT Id, MasterLabel FROM LeadStatus WHERE IsConverted = TRUE LIMIT 1];
             }
 
             return convertStatus;
@@ -530,7 +530,7 @@ public class INT_InteractionProcessor {
         String campaignMemberStatus = (!additionalCampaign) ? interaction.Campaign_Member_Status__c : interaction.Additional_Campaign_Member_Status__c;
         String campaignMemberKey = String.valueOf(leadOrContactId + '.' + campaignKey);
 
-        if (campaignMemberMap.containskey(campaignMemberKey)) {
+        if (campaignMemberMap.containsKey(campaignMemberKey)) {
             memberToUpsert = campaignMemberMap.get(campaignMemberKey);
             memberToUpsert.Campaign_Member_Key__c = leadOrContactId + '.' + campaignIdMap.get(campaignKey);
         } else {
