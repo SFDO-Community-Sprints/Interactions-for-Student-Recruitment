@@ -74,6 +74,18 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Interaction_Source_Field_API_Name__c</fullName>
+        <description>The source field on the Interaction object you would like to map to a Target Object field. The value in this field must be in API format and matches an existing field on Interaction.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The source field on the Interaction object you would like to map. Ensure this is in API format and matches the existing field on Interaction.</inlineHelpText>
+        <label>Interaction Source Field API Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Skip_Mapping__c</fullName>
         <description>Select the Interaction Sources that should ignore this mapping configuration. The values in this picklist should match the values in Interaction&apos;s &quot;Interaction Sources&quot; field.</description>
         <externalId>false</externalId>
