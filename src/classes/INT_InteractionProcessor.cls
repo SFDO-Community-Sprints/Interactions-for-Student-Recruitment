@@ -409,6 +409,25 @@ public class INT_InteractionProcessor {
      * @return leadsToReconvert, a List of possible Database.LeadConvert error records to try and reconvert.
      */
     private List<Database.LeadConvert> convertLeads(List<Database.LeadConvert> leadsToConvert) {
+        
+        // Get set of all lead converts where contact has been specified but not account
+        Set<Id> contactIdsMissingAccount = new Set<Id>();
+        for (Database.LeadConvert lc:leadsToConvert) {
+            if (lc.getContactId() != null && lc.getAccountId() == null) {
+                contactIdsMissingAccount.add(lc.getContactId());
+            }
+        }
+        
+        // Query for contact's account and set it on lead convert
+        if (!contactIdsMissingAccount.isEmpty()) {
+            Map<Id, Contact> contacts = new Map<Id, Contact>([SELECT Id, AccountId FROM Contact WHERE Id IN :contactIdsMissingAccount]);
+            for (Database.LeadConvert lc:leadsToConvert) {
+            	if (lc.getContactId() != null && lc.getAccountId() == null && contacts.containsKey(lc.getContactId())) {
+                	lc.setAccountId(contacts.get(lc.getContactId()).AccountId);
+            	}
+        	}
+        }
+        
         List<Database.LeadConvert> leadsToReconvert = new List<Database.LeadConvert>();
         Database.LeadConvertResult[] leadConvertResults = Database.convertLead(leadsToConvert, false); // Convert Leads
 
