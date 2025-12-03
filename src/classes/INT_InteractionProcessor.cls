@@ -354,6 +354,7 @@ public class INT_InteractionProcessor {
                         Database.DuplicateError dupErrorError = (Database.DuplicateError) error;
 
                         for (Datacloud.MatchResult matchResult : dupErrorError.getDuplicateResult().getMatchResults()) {
+                            if (matchResult.getEntityType() == 'Lead'){
                             for (Datacloud.MatchRecord match : matchResult.getMatchRecords()) {
                                 // Grab matched record to use instead of the new one.
                                 interaction.Lead__c = match.getRecord().Id;
@@ -370,6 +371,7 @@ public class INT_InteractionProcessor {
                                     }
                                 }
                             }
+                        }
                         }
                     } else { // Catch-all for all other errors
                         interaction.Audit_Reason__c += ' Reason: Error during Lead insert - ' + error.getMessage() + '.';
@@ -410,7 +412,10 @@ public class INT_InteractionProcessor {
      */
     private List<Database.LeadConvert> convertLeads(List<Database.LeadConvert> leadsToConvert) {
         List<Database.LeadConvert> leadsToReconvert = new List<Database.LeadConvert>();
-        Database.LeadConvertResult[] leadConvertResults = Database.convertLead(leadsToConvert, false); // Convert Leads
+        //Setting DMLOptions to allowSave allows duplicate matching rules that alert rather than block to save results.  This allows the standard duplicate account rule to be bypassed.
+        Database.DMLOptions dml = new Database.DMLOptions();
+		dml.DuplicateRuleHeader.AllowSave = true;
+        Database.LeadConvertResult[] leadConvertResults = Database.convertLead(leadsToConvert, dml); // Convert Leads
 
         for (Database.LeadConvertResult lcr : leadConvertResults) {
             Interaction__c interaction = (leadIdToInteractionMap.containsKey(lcr.getLeadId())) ? leadIdToInteractionMap.get(lcr.getLeadId()) : null;
@@ -445,7 +450,7 @@ public class INT_InteractionProcessor {
 
                         for (Datacloud.MatchResult matchResult : dupError.getDuplicateResult().getMatchResults()) {
                             Contact matchedContact;
-
+                        if (matchResult.getEntityType() == 'Contact'){
                             for (Datacloud.MatchRecord match : matchResult.getMatchRecords()) {
                                 // We want to use the oldest matched record, it will be the source Contact.
                                 Contact compareContact = (Contact) match.getRecord();
@@ -454,6 +459,7 @@ public class INT_InteractionProcessor {
                                     matchedContact = compareContact;
                                 }
                             }
+                        }
 
                             // Build new Lead convert with matching records.
                             if (matchedContact != null) { // NPE handling
